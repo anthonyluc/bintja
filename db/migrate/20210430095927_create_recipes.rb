@@ -7,7 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.integer :preparation_time
       t.integer :cooking_time
       t.boolean :favorite, default: false
-      t.text :notes
+      t.text :note
       t.boolean :note_private, default: false
       t.boolean :official, default: false
       t.integer :alert

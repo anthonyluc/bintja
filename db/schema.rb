@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_152408) do
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.boolean "favorite", default: false
-    t.text "notes"
+    t.text "note"
     t.boolean "note_private", default: false
     t.boolean "official", default: false
     t.integer "alert"

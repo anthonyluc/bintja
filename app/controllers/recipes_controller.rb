@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+    before_action :set_recipe, only: [:create]
+
     skip_before_action :authenticate_user!, only: [:index, :show]
     skip_after_action :verify_authorized, :verify_policy_scoped, only: [:index, :show]
 
@@ -34,5 +36,26 @@ class RecipesController < ApplicationController
         else
             @bt_add_recipe  = "Add to my recipes"
         end
+    end
+
+    def create
+        if @recipe.keys[0] != nil
+          recipe = Recipe.create(name: @recipe.keys[0], url_video: @recipe.values[0][:url], url_image: @recipe.values[0][:image], user: current_user)
+          yt_video_id = YouTubeAddy.extract_video_id(recipe.url_video)
+          redirect_to recipe_path(yt_video_id, title: recipe.name)
+          
+          authorize recipe
+        else
+          redirect_to root_path
+        end
+    end
+
+    private
+
+    def set_recipe
+        params.require(:recipe).permit(:id)
+        yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:recipe][:id]}")
+        load "#{Rails.root}/app/services/scrap_video_info.rb"
+        @recipe = eval(ScrapVideoInfo.youtube(yt_video_id))
     end
 end
