@@ -1,0 +1,29 @@
+<div class='login-form'>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="avatar"><i class="fa fa-user-ninja"></i></div>
+    <h4 class="modal-title">Login to Your Account</h4>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  label: false,
+                  placeholder: "Email",
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  label: false,
+                  placeholder: "Password",
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      
+      <div class="form-group small clearfix">
+          <label class="checkbox-inline"><input type="checkbox"> Remember me</label>
+          <a href="<%= new_user_password_path %>" class="forgot-link">Forgot Password?</a>
+      </div> 
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Login", class: "btn btn-primary btn-block btn-lg" %>
+    </div>
+  <% end %>
+  <div class="text-center small">Don't have an account? <a href="<%= new_user_registration_path %>">Sign up</a></div>
+</div>

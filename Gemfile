@@ -33,6 +33,26 @@ gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
+gem 'pundit'
+gem 'turbolinks_render'
+gem 'cloudinary'
+gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
+
+# Scrapping
+gem 'open-uri'
+gem 'json'
+
+# Show Youtube video
+gem 'youtube_addy'
+
+# Lancement des tâches de fond
+gem 'sidekiq'
+# Show failures in Sidekiq admin
+gem 'sidekiq-failures', '~> 1.0'
+# Pour le lancement automatisé
+gem 'sidekiq-cron'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
