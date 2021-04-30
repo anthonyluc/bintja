@@ -1,2 +1,40 @@
 class UsersController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:show, :user_recipe_show]
+    skip_after_action :verify_authorized, only: [:show]
+
+    def show
+        @user = User.find(params[:id])
+      
+        @social_networks = SocialNetwork.where(user: @user).first
+
+        if params[:group].present?
+          if params[:group][:id].present?
+            @recipes = Recipe.where(user: @user, recipe_group_id: params[:group][:id], show: true)
+            @group = RecipeGroup.where(user: @user, id: params[:group][:id]).first
+          else
+            @recipes = Recipe.where(user: @user, show: true)
+          end
+        else
+          @recipes = Recipe.where(user: @user, show: true)
+        end
+        
+        @groups = RecipeGroup.where(user: @user, private: false)
+        
+        # Follow button
+        follow = Follower.where(follower_id: current_user, followed_id: @user).first
+        if  follow != nil
+          @follow = "Unfollow"
+        else
+          @follow = "Follow"
+        end
+        
+        # .first.order(created_at: :desc)
+        @selected = params[:group].blank? ? '' : params[:group][:id]
+      
+        @nb_follow = Follower.where(follower_id: @user.id).count
+        @nb_followers = Follower.where(followed_id: @user.id).count
+        @nb_recipes = Recipe.where(user: @user, show: true).count
+
+        @recipes = Kaminari.paginate_array(@recipes).page(params[:page]).per(9)
+    end
 end

@@ -1,0 +1,12 @@
+<% @recipes.each do |recipe| %>
+  <div class='recipe_card'>
+    <a href="<%= user_recipe_path(params[:id], recipe.url_video.gsub('https://www.youtube.com/watch?v=',''), title: recipe.name) %>">
+    <div class="my_card">
+      <img src="<%= recipe.url_image %>" />
+      <div class="card-infos">
+        <h2><%= recipe.name.downcase.capitalize %></h2>
+      </div>
+    </div>
+    </a>
+  </div>
+<% end %>

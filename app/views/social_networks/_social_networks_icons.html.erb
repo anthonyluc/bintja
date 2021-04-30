@@ -1,0 +1,30 @@
+<div class='social_networks_icons'>
+  <% if @social_networks.url_youtube.present? %>
+    <div class='url_link'>
+      <%= link_to "http://#{@social_networks.url_youtube}", :target => "_blank" do %>
+        <i class="fab fa-youtube"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @social_networks.url_instagram.present? %>
+    <div class='url_link'>
+      <%= link_to "http://#{@social_networks.url_instagram}", :target => "_blank" do %>
+        <i class="fab fa-instagram"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @social_networks.url_facebook.present? %>
+    <div class='url_link'>
+      <%= link_to"http://#{@social_networks.url_facebook}", :target => "_blank" do %>
+        <i class="fab fa-facebook"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @social_networks.url_website.present? %>
+    <div class='url_link'>
+      <%= link_to "http://#{@social_networks.url_website}", :target => "_blank" do %>
+        <i class="fas fa-globe"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
