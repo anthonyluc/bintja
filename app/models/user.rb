@@ -8,8 +8,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /(\w[\w\.]+)@(.+)\.(\S+{2,4})/ }
 
   has_one_attached :avatar
+  has_one :shopping_list, dependent: :destroy
   has_many :recipes, dependent: :destroy
-  has_many :social_networks
+  has_many :social_networks, dependent: :destroy
+  has_many :reviews
   has_many :quantities, through: :recipes
   has_many :recipe_groups, dependent: :delete_all
 

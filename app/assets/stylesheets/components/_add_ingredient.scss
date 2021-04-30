@@ -1,0 +1,14 @@
+.add_ingredient{
+    margin: 1rem 0px;
+    padding: 0px 30px;
+    .simple_form{
+        display: flex;
+        justify-content: space-between;
+        .form-group{
+            margin-bottom: 0px;
+        }
+        .btn{
+            color: white;
+        }
+    }
+}

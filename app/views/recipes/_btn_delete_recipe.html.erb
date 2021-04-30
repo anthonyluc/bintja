@@ -1,0 +1,3 @@
+<% if @bt_add_recipe == 'added' %>
+  <%= link_to "Delete", recipe_path(params[:id]), method: :delete, class: 'btn_delete_recipe' %>
+<% end %>

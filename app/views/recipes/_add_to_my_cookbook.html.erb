@@ -1,0 +1,12 @@
+<% if current_user %>
+  <% if @bt_add_recipe == 'to_add' %>
+    <div class='add_to_my_cookbook'>
+      <%= form_for @user_recipe, remote: true do |ur| %>
+        <%= ur.text_field :id, value: params[:id], hidden: true %>
+        <%= ur.submit "Add to my cookbook", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to "Log in to add this recipe", user_session_path, class: 'btn btn-outline-primary btn-log' %>
+<% end %>

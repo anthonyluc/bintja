@@ -1,0 +1,56 @@
+.ingredients_list {
+    .table {
+        margin-bottom: 0.5rem;
+        white-space: nowrap;
+        table-layout: fixed;
+        h3{
+            text-transform: uppercase;
+        }
+        thead {
+            font-size: x-small;
+        }
+        tbody {
+            font-size: small;
+        }
+    }
+    .table th, .table td {
+        padding: 0.4rem 0px;
+
+    }
+    .table tr{
+        text-align: center;
+
+        .custom-checkbox input[type="checkbox"],
+            .custom-checkbox .checked {
+            display: none;
+        }
+ 
+        .custom-checkbox input[type="checkbox"]:checked ~ .checked {
+            display: inline-block;
+        }
+ 
+        .custom-checkbox input[type="checkbox"]:checked ~ .unchecked {
+            display: none;
+        }
+        label.custom-checkbox {
+            width: 100%;
+        }
+        .fa-trash-alt{
+            color: white;
+            opacity: 0.5;
+            &:hover{
+                opacity: 1;
+            }
+        }
+        input[type=text]{
+            background-color: transparent;
+            color: white;
+            border: none;
+            text-align: center;
+        }
+        .input_resized{
+            size: '';
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,93 @@
+#recipe_show {
+    background-color: white;
+    margin: 2rem 0px 0px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    .top-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+    .add_to_my_cookbook{ 
+      text-align: center;
+      .btn{
+        color: white;
+      }
+      .btn-outline-primary{
+        color: $primary;
+      } 
+    }
+    .btn-log:hover{
+      color: white;
+    }
+    h1{
+        padding-bottom: 1rem;
+        padding: 5px 30px 20px 30px;
+    }
+    h3{
+        margin-bottom: 0px;
+    }
+  
+    .main-content {
+      .col-left{
+          grid-column: 1;
+          grid-row: 1;
+      }
+      .col-right{
+          grid-column: 2/3;
+          grid-row: 1;
+      }
+      .recipe_video{
+          margin-bottom: 1rem;
+          iframe {
+              width: 100%;
+              height: 60vh;
+            }
+        }
+            
+        .set_recipe_group {
+          margin-bottom: 1rem;
+        }
+  
+        .recipe_note {
+          text-align: right;
+          margin-bottom: 1rem;
+          padding: 0px 30px;
+  
+          textarea.form-control {
+              min-height: 100px;
+              margin-bottom: 1rem;
+          }
+          input:hover, input:active{
+             color: white;
+          }
+        }
+     } 
+  
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) { 
+      .main-content {
+        display: block;
+        // grid-template-columns: 1fr;
+      }
+     }
+  
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) { 
+      
+     }
+  
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) { 
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+      }
+     }
+  
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { 
+      
+     }
+  
+  }

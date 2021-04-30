@@ -1,0 +1,82 @@
+<% if @bt_add_recipe == 'added' %>
+  <div class='ingredients_list'>
+    <%= form_with model: @recipe, url: quantity_path(params[:id]) do |form| %>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th colspan="10"><h3>Ingredients</h3></th>
+          </tr>
+          <tr>
+            <th scope="col">Trash</th>
+            <th scope="col">Quantity</th>
+            <th scope="col" colspan="2">Unity</th>
+            <th scope="col" colspan="3">Ingredient</th>
+            <th scope="col" colspan="2" class='text-center text-wrap'>Calorie<br>(100 ml | gr)</th>
+            <th scope="col">To shop</th>
+          </tr>
+        </thead>
+        <div data-flash-target='delete_ingredient update_quantities'></div>
+        <tbody data-add-ingredient-target='ingredients'>
+          <%#= form.hidden_field :searching, value: true %>
+          <%= form.fields_for :quantities, @recipe.quantities.sort_by(&:unity) do |quantities_form| %>
+            <tr data-controller='destroy-ingredient' data-destroy-ingredient-target='ingredient'>    
+              <td>          
+              <%= link_to recipe_quantity_path(params[:id],quantities_form.object.id), method: :delete, :data => { :action => "click->destroy-ingredient#destroy click->flash#deleteIngredient" } do %>
+                  <i class="fas fa-trash-alt"></i>
+              <% end %>
+              </td>
+              <td>
+              <%= quantities_form.text_field :quantity, class: 'input_resized'%>
+              </td>
+              <td colspan="2">
+              <%= quantities_form.text_field :unity, class: 'input_resized' %>
+              </td>         
+              <%= quantities_form.fields_for :ingredient  do |ingredients_form|%>
+                <td colspan="3">
+                    <%= ingredients_form.text_field :name, class: 'input_resized' %>
+                </td>
+                <td colspan="2">
+                    <%= ingredients_form.text_field :calorie, disabled: true, class: 'input_resized' %>
+                </td>
+              <% end %>
+              <td>
+              <%= quantities_form.label :add_shopping_list, "Add ", class: "custom-checkbox" do %>
+                  <%= quantities_form.check_box :add_shopping_list, class: 'input_resized' %>
+                  <i class="fa fa-fw fa fa-bell-o unchecked"></i>
+                  <i class="fas fa-shopping-cart checked"></i>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="10"><%= form.submit "save updates", class: 'btn btn-outline-light', :data => { :action => "click->flash#updateQuantities" } %> </td>
+          </tr>
+        </tfoot>
+      </table>
+    <% end %>
+  </div>
+<% else %>
+  <div class='ingredients_list'>
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th colspan="10"><h3>Ingredients</h3></th>
+        </tr>
+        <tr>
+          <th scope="col">Trash</th>
+          <th scope="col">Quantity</th>
+          <th scope="col" colspan="2">Unity</th>
+          <th scope="col" colspan="3">Ingredient</th>
+          <th scope="col" colspan="2" class='text-center text-wrap'>Calorie<br>(100 ml | gr)</th>
+          <th scope="col">To shop</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>  
+  </div>
+<% end %>

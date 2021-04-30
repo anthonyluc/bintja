@@ -1,0 +1,14 @@
+<% if @bt_add_recipe == 'added' %>
+  <div class='add_ingredient'>
+    <div data-flash-target='add_ingredient'></div>
+    <%= simple_form_for @add_ingredient do |i| %>
+      <%= i.hidden_field :video_id, value: params[:id], :data => { :'add-ingredient-target' => "video_id" } %>
+      <%= i.simple_fields_for @add_quantity do |q| %>
+        <%= q.input :quantity, :label => false, :placeholder => 'Quantity', required: true, :input_html => { :data => { :'add-ingredient-target' => "quantity" } } %>
+        <%= q.input :unity, :label => false, :placeholder => 'Unity', required: true, :input_html => { :data => { :'add-ingredient-target' => "unity" } } %>
+      <% end %>
+      <%= i.input :name, :label => false, :placeholder => 'Name', required: true, :input_html => { :data => { :'add-ingredient-target' => "name" }} %>
+      <%= i.submit "Add ingredient", class: "btn btn-primary", :data => { :action => "click->add-ingredient#add click->flash#addIngredient", :'add-ingredient-target' => "btn" }  %>
+    <% end %>
+  </div>
+<% end %>

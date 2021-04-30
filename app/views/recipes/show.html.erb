@@ -1,0 +1,22 @@
+<div class='container'>
+    <div id='recipe_show' data-controller='add-ingredient'>
+        <div class='top-button'>
+            <%= render "shared/btn_back" %>
+            <%= render "recipe_groups/set_recipe_group" %>
+            <%= render "recipes/btn_delete_recipe" %>
+            <%= render "recipes/add_to_my_cookbook" %>
+        </div>
+
+        <div class='main-content'>
+            <div class='col-right'>
+            <%= render "recipes/recipe_video" %>
+            <%= render "ingredients/add_ingredient" %>
+            <h1><%= params[:title] %></h1>
+            <%= render "recipes/recipe_note" %>
+            </div>
+            <div class='col-left'>
+            <%= render "ingredients/ingredients_list" %>
+            </div>
+        </div>
+    </div>
+</div>

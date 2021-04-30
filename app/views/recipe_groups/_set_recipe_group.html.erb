@@ -1,0 +1,9 @@
+<div class='set_recipe_group'>
+  <% if @bt_add_recipe == 'added' %>
+    <div data-flash-target='recipe_group'></div>
+    <%= simple_form_for :recipe, url: recipe_recipe_group_path(params[:id]), method: :post, html: {class: 'form-inline'}, remote: true  do |g| %>
+      <%= g.input :id, :collection => @groups, :label_method => :name, :value_method => :id, :selected => @selected, :label => false ,:include_blank => "All recipes" %>
+      <%= g.button :submit, "Set group", name: nil, :data => { :action => "click->flash#recipeGroup" } %>
+    <% end %>
+  <% end %>
+</div>

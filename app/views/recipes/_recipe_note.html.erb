@@ -1,0 +1,9 @@
+<% if @bt_add_recipe == 'added' %>
+  <div class='recipe_note'>
+    <div data-flash-target='notice_note'></div>
+    <%= form_for @recipe, url: recipe_path, method: :put, remote: true do |f| %>
+      <%= f.text_area :note, :value => @recipe.note, class: 'form-control', placeholder: 'Write some notes...' %>
+      <%= f.submit "Save notes", class: 'btn btn-outline-primary', :data => { :action => "click->flash#noticeNote" } %>
+    <% end %>
+  </div>
+<% end %>
