@@ -1,0 +1,9 @@
+.users_cards {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    text-align: center;
+    .avatar{
+        width: 80px;
+        height: 80px;
+    }
+}
