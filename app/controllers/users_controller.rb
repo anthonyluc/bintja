@@ -59,4 +59,10 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
+
+    def destroy_avatar
+      current_user.avatar.purge
+      authorize current_user
+      redirect_to edit_user_registration_path
+    end
 end

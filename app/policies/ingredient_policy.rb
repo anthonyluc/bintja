@@ -8,4 +8,5 @@ class IngredientPolicy < ApplicationPolicy
   def create?
     true
   end
+
 end

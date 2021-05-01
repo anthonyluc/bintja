@@ -14,7 +14,7 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    true
   end
 
   def user_recipe_show?
