@@ -5,7 +5,11 @@ class ShoppingListPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    record.user == user
+  end
+
   def shopping_list?
-    record.user_id == user.id
+    record.user == user
   end
 end

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'follow', to: 'followers#index'
   get 'my_cookbook', to: 'recipes#my_cookbook'
   get 'shopping_list', to: 'quantities#shopping_list'
-  post 'shopping_list', to: 'quantities#shopping_note'
+  put 'shopping_list', to: 'shopping_lists#update'
   put 'update_quantity', to: 'quantities#update'
   delete 'avatar', to: 'users#destroy_avatar'
   
