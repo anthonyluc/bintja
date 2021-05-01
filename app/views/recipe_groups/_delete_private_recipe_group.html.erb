@@ -1,0 +1,9 @@
+<div class="delete_private_recipe_group">
+  <% if params[:group].present? %>
+    <% if params[:group][:id].present? %>
+      <%= link_to "Delete group", recipe_group_path(params[:group][:id]), method: :delete, remote: true  %> |
+      <%= link_to "Private group", recipe_group_path(params[:group][:id]), method: :put, remote: true  %>
+      <%= 'Private' if @group.private %>
+    <% end %>
+  <% end %>
+</div>

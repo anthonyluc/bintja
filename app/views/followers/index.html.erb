@@ -1,0 +1,18 @@
+<div class='container'>
+  <div id="follower">
+    <div class='col-left'>
+        <h1>I follow</h1>
+        <%= render 'users/users_cards' %>
+        <div class="pages">
+            <%= paginate @users, :param_name => 'p_users' %>
+        </div>
+    </div>
+    <div class='col-right'>
+        <h1>My followers</h1>
+        <%= render 'followers/followers_cards' %>
+        <div class="pages">
+            <%= paginate @followers, :param_name => 'p_followers' %>
+        </div>
+    </div>
+  </div>
+</div>

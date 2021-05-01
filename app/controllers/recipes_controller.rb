@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [:create]
+    before_action :recipe_note_params, only: [:update]
+    before_action :recipe_group_params, only: [:recipe_group]
 
     skip_before_action :authenticate_user!, only: [:index, :show]
     skip_after_action :verify_authorized, :verify_policy_scoped, only: [:index, :show]
@@ -50,6 +52,75 @@ class RecipesController < ApplicationController
         end
     end
 
+    def update
+        yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
+        if yt_video_id != nil
+          user_recipe = Recipe.where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
+          user_recipe.update(recipe_note_params)
+          respond_to do |format|
+            format.json { render json: { flash: "Update successfully." } }
+          end
+
+          authorize user_recipe
+        end
+    end
+
+    def destroy
+        @recipe = Recipe.where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{params[:id]}")
+        @recipe.first.destroy if @recipe.first != nil
+        authorize @recipe
+        redirect_to my_cookbook_path
+    end
+
+    def recipe_group
+        yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:recipe_id]}")
+        if yt_video_id != nil
+          user_recipe = Recipe.where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
+    
+          group = RecipeGroup.where(user: current_user, id: params[:recipe][:id]).first
+          if group != nil
+            user_recipe.update(recipe_group_id: group.id, show: group.toggle(:private).private)
+          else
+            user_recipe.update(recipe_group_id: nil, show: true)
+          end
+
+          authorize user_recipe
+          authorize group if group != nil
+        end
+    end
+
+    def my_cookbook
+
+        @social_networks = SocialNetwork.where(user: current_user).first
+        
+        if params[:group].present?
+          if params[:group][:id].present?
+            @recipes = Recipe.where(user: current_user, recipe_group_id: params[:group][:id])
+            @group = RecipeGroup.where(user: current_user, id: params[:group][:id]).first
+            
+            authorize @group
+          else
+            @recipes = policy_scope(Recipe).order(created_at: :desc)
+          end
+        else
+          @recipes = policy_scope(Recipe).order(created_at: :desc)
+        end
+    
+        @groups = policy_scope(RecipeGroup).order(created_at: :desc)
+        @add_group = RecipeGroup.new
+        @selected = params[:group].blank? ? '' : params[:group][:id]
+        
+        @nb_follow = Follower.where(follower_id: current_user.id).count
+        @nb_followers = Follower.where(followed_id: current_user.id).count
+        @nb_recipes = Recipe.where(user: current_user).count
+    
+        authorize @recipes
+        authorize @groups
+        authorize @add_group
+    
+        @recipes = Kaminari.paginate_array(@recipes).page(params[:page])
+    end
+
     private
 
     def set_recipe
@@ -57,5 +128,13 @@ class RecipesController < ApplicationController
         yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:recipe][:id]}")
         load "#{Rails.root}/app/services/scrap_video_info.rb"
         @recipe = eval(ScrapVideoInfo.youtube(yt_video_id))
+    end
+
+    def recipe_note_params
+        params.require(:recipe).permit(:note)
+    end
+
+    def recipe_group_params
+        params.require(:recipe).permit(:recipe, :recipe_id, :id)
     end
 end

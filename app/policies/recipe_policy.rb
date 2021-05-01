@@ -6,6 +6,26 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def create?
-    record.id = user.id
+    record.user == user
+  end
+
+  def update?
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
+  end
+
+  def user_recipe_show?
+    true
+  end
+  
+  def my_cookbook?
+    true
+  end
+
+  def recipe_group?
+    record.user == user
   end
 end

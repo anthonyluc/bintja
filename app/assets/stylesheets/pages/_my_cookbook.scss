@@ -1,0 +1,76 @@
+#my-cookbook{
+    background-color: white;
+    margin: 2rem 0px 0px 0px;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    
+    h1{
+      padding: 0px;
+      grid-column: 2 / span 2;
+    }
+  
+    h5 {
+      text-align: center;
+      font-size: smaller;
+      margin-bottom: 2rem;
+    }
+    .recipe_group{
+      display: flex;
+      justify-content: space-between;
+      .btn-primary {
+          margin-left: 10px;
+          color: white;
+      }
+      .selected {
+        display: flex;
+        flex-direction: column;
+        place-items: flex-end;
+        .select_recipe_group {
+          margin-bottom: 15px;
+        }
+      }
+    }
+    .my_recipes{
+      display: grid;
+      grid-gap: 10px;
+    }
+  
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) { 
+      .social_networks_icons {
+        display: flex;
+        font-size: xx-large;
+        justify-content: center;
+      }
+      .my_recipes{
+        grid-template-columns: 1fr;
+      }
+     }
+  
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) { 
+      .my_recipes{
+        grid-template-columns: repeat(2, 1fr);
+      }
+     }
+  
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) { 
+      .title_line {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+  
+      }
+      .social_networks_icons {
+        justify-content: flex-end;
+      }
+      .my_recipes{
+        grid-template-columns: repeat(3, 1fr);
+      }
+     }
+  
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { 
+      
+     }
+  }

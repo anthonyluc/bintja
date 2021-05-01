@@ -21,5 +21,6 @@ class User < ApplicationRecord
   def create_social_networks
     user = User.last
     SocialNetwork.create(user: user)
+    ShoppingList.create(user: user)
   end
 end

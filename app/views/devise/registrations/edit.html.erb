@@ -1,58 +1,59 @@
 <div id="devise_registrations_edit">
-<div class="edit-user-form">
-  <h2>My account</h2>
+  <div class='container'>
+    <div class="edit-user-form">
+      <h2>My account</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <div class='avatar_config'>
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, class: "avatar" %>
-          <%= link_to avatar_path, data: { confirm: "Are you sure to delete your avatar?" }, method: :delete, remote: true, title: "Delete avatar" do %>
-          <i class="fas fa-backspace delete_avatar"></i>
+        <div class="form-inputs">
+          <div class='avatar_config'>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: "avatar" %>
+              <%= link_to avatar_path, data: { confirm: "Are you sure to delete your avatar?" }, method: :delete, remote: true, title: "Delete avatar" do %>
+              <i class="fas fa-backspace delete_avatar"></i>
+              <% end %>
+            <% else %>
+              <%= image_tag "avatar_default.svg", class: "avatar" %>
+            <% end %>
+            <div class=”field”>
+              <%= f.file_field :avatar %>
+            </div>
+          </div>
+          <%= f.input :nickname, required: true, autofocus: true %>
+          <%= f.input :email, required: true, autofocus: true %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
-        <% else %>
-          <%= image_tag "avatar_default.svg", class: "avatar" %>
-        <% end %>
-        <div class=”field”>
-          <%= f.file_field :avatar %>
+
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
         </div>
-      </div>
-      <%= f.input :nickname, required: true, autofocus: true %>
-      <%= f.input :email, required: true, autofocus: true %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <div class="form-actions">
+          <%= f.button :submit, "Update" %>
+        </div>
       <% end %>
-
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Update" %>
-    </div>
-  <% end %>
-  <div class='social_networks'>
-    <%= simple_form_for @social_networks, url: social_network_path(current_user) do |sn| %>
-      <%= sn.input :url_youtube, label: 'YouTube Channel' %>
-      <%= sn.input :url_instagram, label: 'Instagram Profile' %>
-      <%= sn.input :url_facebook, label: 'Facebook Page' %>
-      <%= sn.input :url_website, label: 'Web site' %>
-      <%= sn.button :submit, 'Save my social networks', remote: true %>
-    <% end %>
+      <div class='social_networks'>
+        <%= simple_form_for @social_networks, url: social_network_path(current_user) do |sn| %>
+          <%= sn.input :url_youtube, label: 'YouTube Channel' %>
+          <%= sn.input :url_instagram, label: 'Instagram Profile' %>
+          <%= sn.input :url_facebook, label: 'Facebook Page' %>
+          <%= sn.input :url_website, label: 'Web site' %>
+          <%= sn.button :submit, 'Save my social networks', remote: true %>
+        <% end %>
+      </div>
+      <p class='delete_btn'><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure? Your Bintja account will be immediately and definitively destroyed, so it can not be restored." }, method: :delete %></p>
+    </div>    
   </div>
-  <p class='delete_btn'><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure? Your Bintja account will be immediately and definitively destroyed, so it can not be restored." }, method: :delete %></p>
-  </div>
-  
 </div>

@@ -1,0 +1,7 @@
+<div class='quantity_note'>
+  <div data-flash-target='add_quantity_note'></div>
+  <%= form_for @shopping_list, remote: true do |f| %>
+    <%= f.text_area :shopping_note, :value => @shopping_list.shopping_note, class: 'form-control', placeholder: 'Write some notes...' %><br />
+    <%= f.submit "Save", class: 'btn btn-outline-primary', :data => { :action => "click->flash#addQuantityNote" } %>
+  <% end %>
+</div>

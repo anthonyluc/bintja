@@ -1,0 +1,6 @@
+<div class='select_recipe_group'>
+  <%= simple_form_for :group, url: my_cookbook_path, method: :get, html: {class: 'form-inline'} do |g| %>
+    <%= g.input :id, :collection => @groups, :label_method => :name, :value_method => :id, :selected => @selected, :label => false ,:include_blank => "All recipes" %>
+    <%= g.button :submit, "Go", name: nil %>
+  <%end%>
+</div>

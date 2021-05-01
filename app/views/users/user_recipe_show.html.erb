@@ -1,0 +1,18 @@
+<div class='container'>
+  <div id='recipe_show'>
+    <div class='top-button'>
+        <%= render "shared/btn_back" %>
+        <%= render "recipes/get_this_recipe" %>
+    </div>
+
+    <div class='main-content'>
+        <div class='col-right'>
+        <%= render "recipes/recipe_video" %>
+        <h1><%= params[:title] %></h1>
+        </div>
+        <div class='col-left'>
+        <%= render "ingredients/user_ingredients_list" %>
+        </div>
+    </div>
+  </div>
+</div>

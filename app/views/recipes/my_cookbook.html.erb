@@ -1,0 +1,24 @@
+<div class='container'>
+    <div id="my-cookbook">
+        <div class='title_line'>
+            <h1>My cookbook</h1>
+            <%= render "social_networks/social_networks_icons"%>
+        </div>
+        <%= render "shared/counters" %>
+        <div class='recipe_group'>
+            <%= render "recipe_groups/add_recipe_group" %>
+            <div class='selected'>
+            <%= render "recipe_groups/select_recipe_group" %>
+            <%= render "recipe_groups/delete_private_recipe_group" %>
+            </div>
+        </div>
+        <hr>
+        <div class='my_recipes'>
+            <%= render "recipes/recipe_card" %>
+            <%= render "recipes/add_a_recipe_card" %>
+        </div>
+        <div class="pages">
+            <%= paginate @recipes %>
+        </div>
+    </div>
+</div>

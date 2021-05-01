@@ -1,0 +1,6 @@
+<div class="add_recipe_group">
+  <%= form_for @add_group, html: {class: 'form-inline'}, remote: true do |g| %>
+    <%= g.text_field :name, class: 'form-control', required: true %>
+    <%= g.submit "Create a group", class: 'btn btn-primary' %>
+  <% end %>
+</div>

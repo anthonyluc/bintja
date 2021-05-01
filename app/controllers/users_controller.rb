@@ -37,4 +37,26 @@ class UsersController < ApplicationController
 
         @recipes = Kaminari.paginate_array(@recipes).page(params[:page]).per(9)
     end
+
+    def user_recipe_show
+      yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
+      @url_video = "https://www.youtube.com/watch?v=#{yt_video_id}"
+      @user = params[:user_id]
+      if @user    
+          user_recipe = Recipe.where(user: @user, url_video: @url_video).first
+          if user_recipe.present?
+              @quantities = Quantity.where(recipe_id: user_recipe.id)
+              @recipe = user_recipe
+              @user_recipe = Recipe.new
+
+              authorize @quantities
+              authorize @recipe
+              authorize @user_recipe
+          else
+              redirect_to root_path
+          end
+      else
+        redirect_to root_path
+      end
+    end
 end
