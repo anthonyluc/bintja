@@ -4,8 +4,8 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :url_video
       t.string :url_image
-      t.integer :preparation_time
-      t.integer :cooking_time
+      t.integer :preparation_time, null: false, default: 0
+      t.integer :cooking_time, null: false, default: 0
       t.boolean :favorite, default: false
       t.text :note
       t.boolean :note_private, default: false

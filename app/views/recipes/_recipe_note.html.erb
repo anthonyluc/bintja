@@ -2,8 +2,24 @@
   <div class='recipe_note'>
     <div data-flash-target='notice_note'></div>
     <%= form_for @recipe, url: recipe_path, method: :put, remote: true do |f| %>
+      <div class='preparation_cooking_time'>
+        <div class='preparation_time'>
+          <%= f.label :preparation_time, "Preparation time :" %>
+          <%= f.time_field :preparation_time, :value => Time.at(@recipe.preparation_time).utc.strftime("%H:%M") %>
+        </div>
+        <div class='cooking_time'>
+          <%= f.label :cooking_time, "Cooking time : " %>
+          <%= f.time_field :cooking_time, :value => Time.at(@recipe.cooking_time).utc.strftime("%H:%M") %>
+        </div>
+      </div>
       <%= f.text_area :note, :value => @recipe.note, class: 'form-control', placeholder: 'Write some notes...' %>
-      <%= f.submit "Save notes", class: 'btn btn-outline-primary', :data => { :action => "click->flash#noticeNote" } %>
+      <div class='recipe_note_bottom'>
+        <div class='note_private'>
+          <%= f.label :note_private, "Private note" %>
+          <%= f.check_box :note_private, :value => @recipe.note_private %>
+        </div>
+        <%= f.submit "Save notes", class: 'btn btn-outline-primary', :data => { :action => "click->flash#noticeNote" } %>
+      </div>
     <% end %>
   </div>
 <% end %>

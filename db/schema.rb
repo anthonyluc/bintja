@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2021_04_30_152408) do
     t.string "name"
     t.string "url_video"
     t.string "url_image"
-    t.integer "preparation_time"
-    t.integer "cooking_time"
+    t.integer "preparation_time", default: 0, null: false
+    t.integer "cooking_time", default: 0, null: false
     t.boolean "favorite", default: false
     t.text "note"
     t.boolean "note_private", default: false

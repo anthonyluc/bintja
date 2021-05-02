@@ -3,7 +3,7 @@
     <div class="edit-user-form">
       <h2>My account</h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
@@ -44,15 +44,17 @@
           <%= f.button :submit, "Update" %>
         </div>
       <% end %>
+      <% if @social_networks != nil %>
       <div class='social_networks'>
-        <%= simple_form_for @social_networks, url: social_network_path(current_user) do |sn| %>
+        <%= simple_form_for @social_networks, url: social_network_path(current_user), remote: true do |sn| %>
           <%= sn.input :url_youtube, label: 'YouTube Channel' %>
           <%= sn.input :url_instagram, label: 'Instagram Profile' %>
           <%= sn.input :url_facebook, label: 'Facebook Page' %>
           <%= sn.input :url_website, label: 'Web site' %>
-          <%= sn.button :submit, 'Save my social networks', remote: true %>
+          <%= sn.button :submit, 'Save my social networks' %>
         <% end %>
       </div>
+      <% end %>
       <p class='delete_btn'><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure? Your Bintja account will be immediately and definitively destroyed, so it can not be restored." }, method: :delete %></p>
     </div>    
   </div>

@@ -7,8 +7,21 @@
 
     <div class='main-content'>
         <div class='col-right'>
-        <%= render "recipes/recipe_video" %>
-        <h1><%= params[:title] %></h1>
+          <%= render "recipes/recipe_video" %>
+          <h1><%= params[:title] %></h1>
+          <div class='preparation_cooking_time'>
+            <div class='preparation_time'>
+              Preparation time : <%= Time.at(@recipe.preparation_time).utc.strftime("%Hh%M") %>
+            </div>
+            <div class='cooking_time'>
+              Cooking time : <%= Time.at(@recipe.cooking_time).utc.strftime("%Hh%M") %>
+            </div>
+          </div>
+          <% if @recipe.note_private == false && @recipe.note.empty? == false %>
+            <div class='user_recipe_note'>
+              <%= @recipe.note %>
+            </div>
+          <% end %>
         </div>
         <div class='col-left'>
         <%= render "ingredients/user_ingredients_list" %>

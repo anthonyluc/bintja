@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
         yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
         if yt_video_id != nil
           user_recipe = Recipe.where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
-          user_recipe.update(recipe_note_params)
+          user_recipe.update(@recipe_note_params)
           respond_to do |format|
             format.json { render json: { flash: "Update successfully." } }
           end
@@ -131,7 +131,9 @@ class RecipesController < ApplicationController
     end
 
     def recipe_note_params
-        params.require(:recipe).permit(:note)
+        @recipe_note_params = params.require(:recipe).permit(:note, :preparation_time, :cooking_time, :note_private)
+        @recipe_note_params[:preparation_time] = Time.parse(@recipe_note_params[:preparation_time]).seconds_since_midnight
+        @recipe_note_params[:cooking_time] = Time.parse(@recipe_note_params[:cooking_time]).seconds_since_midnight
     end
 
     def recipe_group_params

@@ -29,6 +29,8 @@
     }
   
     .main-content {
+      margin-bottom: 1rem;
+
       .col-left{
           grid-column: 1;
           grid-row: 1;
@@ -48,20 +50,33 @@
         .set_recipe_group {
           margin-bottom: 1rem;
         }
-  
+        .preparation_cooking_time{
+          display: flex;
+          justify-content: space-around;
+
+          input{
+            border: none;
+          }
+        }
+        .preparation_cooking_time input:hover, .preparation_cooking_time input:active{
+          color: black!important;
+       }
         .recipe_note {
           text-align: right;
-          margin-bottom: 1rem;
           padding: 0px 30px;
   
           textarea.form-control {
               min-height: 100px;
-              margin-bottom: 1rem;
+              margin: 1rem 0px;
           }
-          input:hover, input:active{
-             color: white;
+          .recipe_note_bottom {
+            display: flex;
+            justify-content: space-between;
           }
         }
+        .recipe_note input:hover, .recipe_note input:active{
+          color: white;
+       }
      } 
   
     // Small devices (landscape phones, 576px and up)
