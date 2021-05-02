@@ -48,10 +48,18 @@ class UsersController < ApplicationController
               @quantities = Quantity.where(recipe_id: user_recipe.id)
               @recipe = user_recipe
               @user_recipe = Recipe.new
+              @add_reviews = Review.new
+              @add_recipe_rate = RecipeRate.new
+              @reviews = Review.where(video_id: yt_video_id)
+              @recipe_rate = RecipeRate.where(video_id: yt_video_id).average(:stars).to_i
+              @recipe_rate_count = RecipeRate.where(video_id: yt_video_id).count
 
               authorize @quantities
               authorize @recipe
               authorize @user_recipe
+              authorize @reviews
+              authorize @add_recipe_rate
+              
           else
               redirect_to root_path
           end

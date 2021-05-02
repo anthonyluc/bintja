@@ -1,0 +1,8 @@
+<div class='add_recipe_rate'>
+    <div data-flash-target='add_recipe_rate'></div>
+    <%= form_for @add_recipe_rate, url: recipe_rates_path, method: :post, remote: true do |r| %>
+        <%= r.number_field :stars, :value => @add_recipe_rate.stars %><br />
+        <%= r.hidden_field :url, value: request.original_url, hidden: true %>
+        <%= r.submit "Evaluate", class: 'btn btn-outline-primary', :data => { :action => "click->flash#addRecipeRate" } %>
+    <% end %>
+</div>

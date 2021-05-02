@@ -1,0 +1,8 @@
+<div class='add_reviews'>
+    <div data-flash-target='add_reviews'></div>
+    <%= form_for @add_reviews, url: reviews_path, method: :post, remote: true do |r| %>
+        <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control', placeholder: 'add a comment...' %><br />
+        <%= r.hidden_field :url, value: request.original_url, hidden: true %>
+        <%= r.submit "Add reviews", class: 'btn btn-outline-primary', :data => { :action => "click->flash#addReviews" } %>
+    <% end %>
+</div>

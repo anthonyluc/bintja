@@ -17,11 +17,15 @@
               Cooking time : <%= Time.at(@recipe.cooking_time).utc.strftime("%Hh%M") %>
             </div>
           </div>
-          <% if @recipe.note_private == false && @recipe.note.empty? == false %>
+          <% if @recipe.note_private == false && @recipe.note.present? %>
             <div class='user_recipe_note'>
               <%= @recipe.note %>
             </div>
           <% end %>
+          <%= render "recipe_rates/average_recipe_rate" %>
+          <%= render "recipe_rates/add_recipe_rate" %>
+          <%= render "reviews/add_reviews" %>
+          <%= render "reviews/index_reviews" %>
         </div>
         <div class='col-left'>
         <%= render "ingredients/user_ingredients_list" %>

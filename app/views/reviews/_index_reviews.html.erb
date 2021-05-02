@@ -1,0 +1,6 @@
+<div class='index_reviews'>
+    <% @reviews.each do |r| %>
+        <%= r.user.nickname %><br>
+        <%= r.comment %><br>
+    <% end %>
+</div>

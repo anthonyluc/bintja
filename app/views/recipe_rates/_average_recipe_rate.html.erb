@@ -1,0 +1,9 @@
+<div class='average_recipe_rate'>
+    <% @recipe_rate.times do %>
+        <i class="fas fa-star"></i>
+    <% end %>
+    <% (5-@recipe_rate).times do %>
+        <i class="far fa-star"></i>
+    <% end %>
+    (<%= @recipe_rate_count %>)
+</div>
