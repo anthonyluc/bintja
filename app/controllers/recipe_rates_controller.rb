@@ -14,7 +14,7 @@ class RecipeRatesController < ApplicationController
             RecipeRate.update(stars: @recipe_rate[:stars])
         end
         authorize recipe_rate
-        redirect_to @recipe_rate[:url]
+        
     end
 
     private

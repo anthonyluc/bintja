@@ -77,6 +77,16 @@
         .recipe_note input:hover, .recipe_note input:active{
           color: white;
        }
+
+       .rate{
+         display: flex;
+         justify-content: center;
+         margin: 1rem 0px;
+         form#new_recipe_rate {
+          display: flex;
+          align-items: center;
+         }
+       }
      } 
   
     // Small devices (landscape phones, 576px and up)

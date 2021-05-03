@@ -1,0 +1,46 @@
+.add_recipe_rate{
+    .stars {
+        overflow: hidden;
+        vertical-align: bottom;
+        display: inline-block;
+        width: auto;
+        height: 30px;
+    }
+      
+    .stars > input {
+        opacity: 0;
+        margin-right: -100%;
+    }
+      
+    .stars > label {
+        position: relative;
+        display: block;
+        float: right;
+        background-image: url('/assets/star_off.svg');
+        background-size: 30px 30px;
+        cursor: pointer;
+    }
+      
+    .stars > label:before {
+        display: block;
+        opacity: 0;
+        content: '';
+        width: 30px;
+        height: 30px;
+        background-image: url('/assets/star_on.svg');
+        background-size: 30px 30px;
+        transition: opacity 0.2s linear;
+    }
+      
+    .stars > label:hover:before,  .stars > label:hover ~ label:before,  .stars:not(:hover) > :checked ~ label:before { opacity: 1; }
+
+    .btn-evaluation{
+        border: none;
+        background: none;
+        color: $green;
+        &:hover{
+            text-decoration: underline;
+            color:#159a5f;
+        }
+    }
+}

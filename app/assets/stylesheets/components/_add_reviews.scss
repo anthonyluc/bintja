@@ -1,0 +1,14 @@
+.add_reviews{
+    text-align: center;
+    padding: 0px 30px;
+    .btn{
+        width: 80%;
+        margin: 1rem auto;
+        &:hover{
+            color: white;
+        }
+    }
+    input.btn.btn-outline-primary.btn-review:active {
+        color: white;
+    }
+}

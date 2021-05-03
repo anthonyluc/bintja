@@ -1,0 +1,14 @@
+.average_recipe_rate{
+    display: flex;
+    align-items: center;
+    .stars{
+        width: 35px;
+    }
+    .star_off{
+        width: 31px;
+    }
+    .counter {
+        font-size: large;
+        font-weight: bold;
+    }
+}

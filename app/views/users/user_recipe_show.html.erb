@@ -22,8 +22,10 @@
               <%= @recipe.note %>
             </div>
           <% end %>
-          <%= render "recipe_rates/average_recipe_rate" %>
-          <%= render "recipe_rates/add_recipe_rate" %>
+          <div class="rate">
+            <%= render "recipe_rates/average_recipe_rate" %>
+            <%= render "recipe_rates/add_recipe_rate" %>
+          </div>
           <%= render "reviews/add_reviews" %>
           <%= render "reviews/index_reviews" %>
         </div>
