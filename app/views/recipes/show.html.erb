@@ -9,13 +9,21 @@
 
         <div class='main-content'>
             <div class='col-right'>
-            <%= render "recipes/recipe_video" %>
-            <%= render "ingredients/add_ingredient" %>
-            <h1><%= params[:title] %></h1>
-            <%= render "recipes/recipe_note" %>
+                <%= render "recipes/recipe_video" %>
+                <%= render "ingredients/add_ingredient" %>
+                <h1><%= params[:title] %></h1>
+                <div class="rate">
+                    <%= render "recipe_rates/average_recipe_rate" %>
+                    <%= render "recipe_rates/add_recipe_rate" %>
+                </div>
+                <%= render "recipes/recipe_note" %>
+                <div class='reviews'>
+                    <%= render "reviews/add_reviews" %>
+                    <%= render "reviews/index_reviews" %>
+                </div>
             </div>
             <div class='col-left'>
-            <%= render "ingredients/ingredients_list" %>
+                <%= render "ingredients/ingredients_list" %>
             </div>
         </div>
     </div>

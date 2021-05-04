@@ -1,6 +1,7 @@
 .add_reviews{
     text-align: center;
     padding: 0px 30px;
+    margin-top: 1rem;
     .btn{
         width: 80%;
         margin: 1rem auto;
@@ -10,5 +11,26 @@
     }
     input.btn.btn-outline-primary.btn-review:active {
         color: white;
+    }
+    .btn-log{
+        color: white;
+    }
+
+    .comment {
+        display: flex;
+        align-items: flex-start;
+
+        .comment_left {
+            margin-right: 10px;
+        }
+
+        .comment_right {
+            flex-grow: 1;
+        }
+    }
+    textarea#review_comment {
+        border: none;
+        border-bottom: 1px solid #e1e1e1;
+        height: 2.5rem;
     }
 }

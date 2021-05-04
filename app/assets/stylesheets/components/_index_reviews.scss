@@ -1,0 +1,19 @@
+.index_reviews{
+    padding: 0px 30px;
+    .comment {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .comment_left {
+            margin-right: 10px;
+        }
+
+        .comment_right {
+            flex-grow: 1;
+            .time_ago {
+                font-size: smaller;
+            }
+        }
+    }
+}

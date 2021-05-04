@@ -17,6 +17,11 @@ class RecipesController < ApplicationController
         @yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
         @url_video = "https://www.youtube.com/watch?v=#{@yt_video_id}"
         @user = current_user
+        @recipe_rate = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
+        @recipe_rate_count = RecipeRate.where(video_id: @yt_video_id).count
+        @add_recipe_rate = RecipeRate.new
+        @add_reviews = Review.new
+        @reviews = Review.where(video_id: @yt_video_id).order(created_at: :desc)
         if @user    
             user_recipe = Recipe.where(user: @user, url_video: @url_video).first
             if user_recipe.present?

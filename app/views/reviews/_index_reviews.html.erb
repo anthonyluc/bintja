@@ -1,6 +1,23 @@
 <div class='index_reviews'>
     <% @reviews.each do |r| %>
-        <%= r.user.nickname %><br>
-        <%= r.comment %><br>
+        <div class='comment'>
+            <div class='comment_left'>
+                <%= link_to user_path(r.user.id) do %>
+                    <% if r.user.avatar.attached? %>
+                        <%= image_tag r.user.avatar, class: "avatar" %>
+                    <% else %>
+                        <%= image_tag "avatar_default.svg", class: "avatar" %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class='comment_right'>
+                <div class='comment_from'>
+                    <b><%= link_to r.user.nickname, user_path(r.user.id) %></b> <span class='time_ago'><%= time_ago_in_words(r.created_at) %></span>
+                </div>
+                <div class='comment_content'>
+                    <%= r.comment %>
+                </div>
+            </div>
+        </div>    
     <% end %>
 </div>
