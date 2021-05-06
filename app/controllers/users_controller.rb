@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       @url_video = "https://www.youtube.com/watch?v=#{yt_video_id}"
       @user = params[:user_id]
       if @user    
-          user_recipe = Recipe.where(user: @user, url_video: @url_video).first
+          user_recipe = Recipe.includes(:quantities).includes(:ingredients).where(user: @user, url_video: @url_video).first
           if user_recipe.present?
               @quantities = Quantity.where(recipe_id: user_recipe.id)
               @recipe = user_recipe
@@ -60,6 +60,7 @@ class UsersController < ApplicationController
               authorize @reviews
               authorize @add_recipe_rate
               
+              @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(25)
           else
               redirect_to root_path
           end

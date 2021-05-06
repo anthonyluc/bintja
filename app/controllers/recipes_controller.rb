@@ -22,8 +22,9 @@ class RecipesController < ApplicationController
         @add_recipe_rate = RecipeRate.new
         @add_reviews = Review.new
         @reviews = Review.includes(:user).where(video_id: @yt_video_id).order(created_at: :desc)
+        @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(25)
         if @user    
-            user_recipe = Recipe.where(user: @user, url_video: @url_video).first
+            user_recipe = Recipe.includes(:quantities).includes(:ingredients).where(user: @user, url_video: @url_video).first
             if user_recipe.present?
                 @bt_add_recipe = "added"
                 @quantities = Quantity.where(recipe_id: user_recipe.id)

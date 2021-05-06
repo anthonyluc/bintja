@@ -8,10 +8,8 @@ class QuantitiesController < ApplicationController
 
         @quantities_tab = []
         recipes.each do |r|
-          quantities = Quantity.where(recipe: r, add_shopping_list: true)
+          quantities = Quantity.includes(:ingredient).where(recipe: r, add_shopping_list: true)
           quantities.each do |q|
-  
-            # @quantities_hash[q.ingredient.name] << [quantity: q.quantity, unity: q.unity, recipe: r.name]
             @quantities_tab << [q.ingredient.name.downcase , q.quantity, q.unity, r.name, YouTubeAddy.extract_video_id(r.url_video)]
           end
         end
@@ -25,7 +23,7 @@ class QuantitiesController < ApplicationController
       if params[:recipe] != nil
         yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
         if yt_video_id != nil
-          recipe = Recipe.where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
+          recipe = Recipe.includes(:ingredients).where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
           # MAJ des quantités
           recipe.update(quantities_params)
           authorize recipe
