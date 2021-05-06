@@ -6,10 +6,10 @@ class ReviewsController < ApplicationController
         review = Review.new(comment: @reviews[:comment], video_id: video_id, user: current_user)
         authorize review
         if review.save
-            redirect_to @reviews[:url]
-        else
-            flash.alert = "Alert !"
-            redirect_to @reviews[:url] 
+            respond_to do |format|
+                format.html
+                format.json { render json: { user_id: current_user.id, nickname: current_user.nickname } }
+              end
         end
     end
 

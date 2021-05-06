@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
         @recipe_rate_count = RecipeRate.where(video_id: @yt_video_id).count
         @add_recipe_rate = RecipeRate.new
         @add_reviews = Review.new
-        @reviews = Review.where(video_id: @yt_video_id).order(created_at: :desc)
+        @reviews = Review.includes(:user).where(video_id: @yt_video_id).order(created_at: :desc)
         if @user    
             user_recipe = Recipe.where(user: @user, url_video: @url_video).first
             if user_recipe.present?

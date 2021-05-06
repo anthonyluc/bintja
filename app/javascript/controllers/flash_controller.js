@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ['add_ingredient', 'delete_ingredient', 'add_quantity_note', 'update_quantities', 'notice_note', 'recipe_group'];
+  static targets = ['add_recipe_rate', 'add_reviews', 'add_ingredient', 'delete_ingredient', 'add_quantity_note', 'update_quantities', 'notice_note', 'recipe_group'];
 
     flashDiv(e) {
        return `
@@ -48,5 +48,13 @@ export default class extends Controller {
     recipeGroup(){
         this.recipe_groupTarget.innerHTML = this.flashDiv('Group has been changed successfully.');
         this.closeElement(this.recipe_groupTarget);
+    }
+    addReviews(){
+        this.add_reviewsTarget.innerHTML = this.flashDiv('Review added successfully.');
+        this.closeElement(this.add_reviewsTarget);
+    }
+    addRecipeRate(){
+        this.add_recipe_rateTarget.innerHTML = this.flashDiv('Rated successfully.');
+        this.closeElement(this.add_recipe_rateTarget);
     }
 }

@@ -50,7 +50,7 @@ class UsersController < ApplicationController
               @user_recipe = Recipe.new
               @add_reviews = Review.new
               @add_recipe_rate = RecipeRate.new
-              @reviews = Review.where(video_id: yt_video_id).order(created_at: :desc)
+              @reviews = Review.includes(:user).where(video_id: yt_video_id).order(created_at: :desc)
               @recipe_rate = RecipeRate.where(video_id: yt_video_id).average(:stars).to_i
               @recipe_rate_count = RecipeRate.where(video_id: yt_video_id).count
 

@@ -48,7 +48,7 @@ export default class extends Controller {
           <label class="custom-checkbox" for="recipe_quantities_attributes_${data.added.counter}_add_shopping_list">
             <input name="recipe[quantities_attributes][${data.added.counter}][add_shopping_list]" type="hidden" value="0"><input class="input_resized" type="checkbox" value="1" name="recipe[quantities_attributes][${data.added.counter}][add_shopping_list]" id="recipe_quantities_attributes_${data.added.counter}_add_shopping_list">  
             <i class="fa fa-fw fa fa-bell-o unchecked"></i>
-            <i class="fas fa-shopping-cart checked"></i>                  
+            <i class="fas fa-shopping-cart checked"></i>
           </label>
         </td>
       </tr>
