@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :get_recipe_params, only: [:get_recipe]
+
     skip_before_action :authenticate_user!, only: [:show, :user_recipe_show]
     skip_after_action :verify_authorized, only: [:show]
 
@@ -73,5 +75,50 @@ class UsersController < ApplicationController
       current_user.avatar.purge
       authorize current_user
       redirect_to edit_user_registration_path
+    end
+
+    def get_recipe
+
+      if @recipe.keys[0] != nil
+
+        # Add Recipe
+        recipe = Recipe.where(user: current_user, url_video: @recipe.values[0][:url]).first
+        if recipe == nil
+          recipe = Recipe.create(name: @recipe.keys[0], url_video: @recipe.values[0][:url], url_image: @recipe.values[0][:image], user: current_user)
+        end
+
+        # Copy Ingredients
+        user_recipe = Recipe.where(user: params[:user_id], url_video: @recipe.values[0][:url]).first
+        user_quantities = Quantity.where(recipe_id: user_recipe.id)
+        user_quantities.each do |q|
+          # On vérifie l'existence
+          ingredient_exists = Quantity.where(recipe: recipe, ingredient: q.ingredient).first
+
+          if ingredient_exists != nil
+            ingredient_exists.update(quantity: q.quantity, unity: q.unity, recipe: recipe, ingredient: q.ingredient)
+          else
+            Quantity.create(quantity: q.quantity, unity: q.unity, recipe: recipe, ingredient: q.ingredient)
+          end
+        end
+
+        authorize recipe
+        authorize user_quantities
+
+        flash[:notice] = 'Successfully copied'
+        redirect_to user_recipe_path(params[:user_id], params[:recipe_id], title: recipe.name)
+
+      else
+        redirect_to root_path
+      end
+    end
+
+    private
+
+    def get_recipe_params
+      params.require(:recipe).permit(:id, :user_id)
+
+      yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:recipe][:id]}")
+      load "#{Rails.root}/app/services/scrap_video_info.rb"
+      @recipe = eval(ScrapVideoInfo.youtube(yt_video_id))
     end
 end

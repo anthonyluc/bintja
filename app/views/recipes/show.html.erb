@@ -1,5 +1,5 @@
 <div class='container'>
-    <div id='recipe_show' data-controller='add-ingredient'>
+    <div id='recipe_show' data-controller='add-ingredient add-to-my-cookbook'>
         <div class='top-button'>
             <%= render "shared/btn_back" %>
             <%= render "recipe_groups/set_recipe_group" %>
@@ -7,7 +7,7 @@
             <%= render "recipes/add_to_my_cookbook" %>
         </div>
 
-        <div class='main-content'>
+        <div class='main-content' data-add-to-my-cookbook-target="main_content">
             <div class='col-right'>
                 <%= render "recipes/recipe_video" %>
                 <%= render "ingredients/add_ingredient" %>

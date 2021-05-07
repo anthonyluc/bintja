@@ -4,4 +4,12 @@ class FollowerPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def index?
+    true
+  end
+
+  def follow?
+    true
+  end
 end

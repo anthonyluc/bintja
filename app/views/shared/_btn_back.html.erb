@@ -1,1 +1,5 @@
-<%= link_to 'Back', :back, class: 'btn_back' %>
+<% if params[:q].presence %>
+    <%= link_to 'Back', recipes_path(q: params[:q]), class: 'btn_back' %>
+<% else %>
+    <%= link_to 'Back', :back, class: 'btn_back' %>
+<% end %>

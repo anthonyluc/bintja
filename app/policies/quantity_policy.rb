@@ -9,11 +9,19 @@ class QuantityPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    record.recipe.user == user
+  end
+
   def destroy?
     record.recipe.user == user
   end
 
   def user_recipe_show?
+    true
+  end
+
+  def get_recipe?
     true
   end
 end

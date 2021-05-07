@@ -1,22 +1,24 @@
 <div class='add_reviews'>
     <div data-flash-target='add_reviews'></div>
     <% if current_user %>
-        <div class='comment'>
-            <div class='comment_left'>
-                <% if current_user.avatar.attached? %>
-                    <%= image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
-                <% else %>
-                    <%= image_tag "avatar_default.svg", class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
-                <% end %>
+        <% if @bt_add_recipe != 'to_add' %>
+            <div class='comment'>
+                <div class='comment_left'>
+                    <% if current_user.avatar.attached? %>
+                        <%= image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                    <% else %>
+                        <%= image_tag "avatar_default.svg", class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                    <% end %>
+                </div>
+                <div class='comment_right'>
+                    <%= form_for @add_reviews, url: reviews_path, method: :post do |r| %>
+                        <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control add_comment', placeholder: 'add a comment...', :data => { :'add-reviews-target' => 'comment' } %>
+                </div>
             </div>
-            <div class='comment_right'>
-                <%= form_for @add_reviews, url: reviews_path, method: :post do |r| %>
-                    <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control add_comment', placeholder: 'add a comment...', :data => { :'add-reviews-target' => 'comment' } %>
-            </div>
-        </div>
-                    <%= r.hidden_field :url, value: request.original_url, hidden: true, :data => { :'add-reviews-target' => 'url' } %>
-                    <%= r.submit "Add reviews", class: 'btn btn-outline-primary btn-review', :data => { :action => "click->add-reviews#addReview click->flash#addReviews", :'add-reviews-target' => 'btn' } %>
-                <% end %>
+                        <%= r.hidden_field :url, value: request.original_url, hidden: true, :data => { :'add-reviews-target' => 'url' } %>
+                        <%= r.submit "Add reviews", class: 'btn btn-outline-primary btn-review', :data => { :action => "click->add-reviews#addReview click->flash#addReviews", :'add-reviews-target' => 'btn' } %>
+                    <% end %>
+        <% end %>
     <% else %>
         <%= link_to "Log in to add a review", user_session_path, class: 'btn btn-primary btn-log' %>
     <% end %>

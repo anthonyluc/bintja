@@ -1,21 +1,23 @@
 <div class='add_recipe_rate'>
     <div data-flash-target='add_recipe_rate'></div>
     <% if current_user %>
-        <%= form_for @add_recipe_rate, url: recipe_rates_path, method: :post, remote: true do |r| %>
-            <span class="stars">
-                <input id="stars5" type="radio" name="recipe_rate[stars]" value="5" <%= 'checked' if @recipe_rate == 5 %>>
-                <label for="stars5">5</label>
-                <input id="stars4" type="radio" name="recipe_rate[stars]" value="4" <%= 'checked' if @recipe_rate == 4 %>>
-                <label for="stars4">4</label>
-                <input id="stars3" type="radio" name="recipe_rate[stars]" value="3" <%= 'checked' if @recipe_rate == 3 %>>
-                <label for="stars3">3</label>
-                <input id="stars2" type="radio" name="recipe_rate[stars]" value="2" <%= 'checked' if @recipe_rate == 2 %>>
-                <label for="stars2">2</label>
-                <input id="stars1" type="radio" name="recipe_rate[stars]" value="1" <%= 'checked' if @recipe_rate == 1 %>>
-                <label for="stars1">1</label>
-            </span> 
-            <%= r.hidden_field :url, value: request.original_url, hidden: true %>
-            <%= r.submit "Evaluate", class: 'btn-evaluation', :data => { :action => "click->flash#addRecipeRate" } %>
+        <% if @bt_add_recipe != 'to_add' %>
+            <%= form_for @add_recipe_rate, url: recipe_rates_path, method: :post, remote: true do |r| %>
+                <span class="stars">
+                    <input id="stars5" type="radio" name="recipe_rate[stars]" value="5" <%= 'checked' if @recipe_rate == 5 %>>
+                    <label for="stars5">5</label>
+                    <input id="stars4" type="radio" name="recipe_rate[stars]" value="4" <%= 'checked' if @recipe_rate == 4 %>>
+                    <label for="stars4">4</label>
+                    <input id="stars3" type="radio" name="recipe_rate[stars]" value="3" <%= 'checked' if @recipe_rate == 3 %>>
+                    <label for="stars3">3</label>
+                    <input id="stars2" type="radio" name="recipe_rate[stars]" value="2" <%= 'checked' if @recipe_rate == 2 %>>
+                    <label for="stars2">2</label>
+                    <input id="stars1" type="radio" name="recipe_rate[stars]" value="1" <%= 'checked' if @recipe_rate == 1 %>>
+                    <label for="stars1">1</label>
+                </span> 
+                <%= r.hidden_field :url, value: request.original_url, hidden: true %>
+                <%= r.submit "Evaluate", class: 'btn-evaluation', :data => { :action => "click->flash#addRecipeRate" } %>
+            <% end %>
         <% end %>
     <% end %>
 </div>

@@ -1,7 +1,7 @@
 class RecipePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
@@ -26,6 +26,10 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def recipe_group?
+    record.user == user
+  end
+
+  def get_recipe?
     record.user == user
   end
 end

@@ -1,6 +1,12 @@
 <div class='quantity_note'>
   <div data-flash-target='add_quantity_note'></div>
   <%= form_for @shopping_list, url: shopping_list_path, method: :put, remote: true do |f| %>
+    
+    <%= f.label :receive_email, "Yes, I want to receive my shopping list by email" %>
+    <%= f.check_box :receive_email %><br>
+    <%= f.label :receive_email_day, "Each" %> 
+    <%= f.select :receive_email_day, options_for_select([['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6], ['Sunday', 7]], @shopping_list.receive_email_day )%>
+     at noon (GMT +2)
     <%= f.text_area :shopping_note, :value => @shopping_list.shopping_note, class: 'form-control', placeholder: 'Write some notes...' %><br />
     <%= f.submit "Save", class: 'btn btn-outline-primary', :data => { :action => "click->flash#addQuantityNote" } %>
   <% end %>

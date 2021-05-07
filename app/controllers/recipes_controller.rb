@@ -15,8 +15,10 @@ class RecipesController < ApplicationController
 
     def show
         @yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
+        @yt_video_id = params[:id]
         @url_video = "https://www.youtube.com/watch?v=#{@yt_video_id}"
         @user = current_user
+        # @recipe_rate = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
         @recipe_rate = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
         @recipe_rate_count = RecipeRate.where(video_id: @yt_video_id).count
         @add_recipe_rate = RecipeRate.new
@@ -49,12 +51,12 @@ class RecipesController < ApplicationController
     def create
         if @recipe.keys[0] != nil
           recipe = Recipe.create(name: @recipe.keys[0], url_video: @recipe.values[0][:url], url_image: @recipe.values[0][:image], user: current_user)
-          yt_video_id = YouTubeAddy.extract_video_id(recipe.url_video)
-          redirect_to recipe_path(yt_video_id, title: recipe.name)
-          
           authorize recipe
+          respond_to do |format|
+            format.json { render json: { flash: "Recipe added successfully." } }
+          end
         else
-          redirect_to root_path
+           redirect_to root_path
         end
     end
 
