@@ -1,9 +1,41 @@
-h1{
-    padding: 30px 0px;
-    width: 100%;
-    text-align: center;
-}
-.recipes_search{
-    width: 80%;
-    margin: 0px auto;
+#home{
+   
+    .home_content{
+        background-color: white;
+        margin: 2rem 0px;
+        padding: 0px 30px 30px 30px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+    }
+    h1{
+        margin-top: 25vh;
+        padding: 30px 0px;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .banner{
+        height: 55vh;
+    }
+    .h2{
+        font-size: 2rem;
+        margin: 2rem;
+        color: $green;
+        text-transform: capitalize;
+    }
+    .recipes_search{
+        width: 60%;
+        margin: 0px auto;
+
+        input#search_query {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+    }
+    
+    .last_recipes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
 }
