@@ -1,6 +1,5 @@
 <div class='users_cards'>
   <% @users.each_with_index do |u, i| %>
-    
     <%= link_to user_path(u) do %>
       <div class='user card'>
         <% if u.avatar.attached? %>

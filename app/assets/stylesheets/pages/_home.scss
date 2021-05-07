@@ -19,7 +19,7 @@
     }
     .h2{
         font-size: 2rem;
-        margin: 2rem;
+        margin: 2rem 0px;
         color: $green;
         text-transform: capitalize;
     }
@@ -30,6 +30,7 @@
         input#search_query {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
+            font-size: x-large;
         }
     }
     

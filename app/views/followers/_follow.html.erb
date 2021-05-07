@@ -1,5 +1,5 @@
 <div class='follow'>
   <% if current_user && current_user.id.to_s != params[:id]%>
-    <%= link_to @follow , user_follow_path(params[:id]), method: :post, remote: true %> 
+    <%= link_to @follow , user_follow_path(params[:id]), method: :post, remote: true, class: 'btn btn-primary' %> 
   <% end %>
 </div>
