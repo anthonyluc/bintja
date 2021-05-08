@@ -10,8 +10,8 @@
           <div class='avatar_config'>
             <% if current_user.avatar.attached? %>
               <%= image_tag current_user.avatar, class: "avatar" %>
-              <%= link_to avatar_path, data: { confirm: "Are you sure to delete your avatar?" }, method: :delete, remote: true, title: "Delete avatar" do %>
-              <i class="fas fa-backspace delete_avatar"></i>
+              <%= link_to avatar_path, id: 'delete_avatar', method: :delete, remote: true, title: "Delete avatar" do %>
+                <i class="fas fa-backspace delete_avatar"></i>
               <% end %>
             <% else %>
               <%= image_tag "avatar_default.svg", class: "avatar" %>
@@ -55,7 +55,7 @@
         <% end %>
       </div>
       <% end %>
-      <p class='delete_btn'><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure? Your Bintja account will be immediately and definitively destroyed, so it can not be restored." }, method: :delete %></p>
+      <p class='delete_btn'><%= link_to "Delete account", registration_path(resource_name), id: 'delete_account',  method: :delete %></p>
     </div>    
   </div>
 </div>

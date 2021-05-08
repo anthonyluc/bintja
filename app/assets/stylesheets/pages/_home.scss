@@ -32,6 +32,9 @@
             color: white;
             font-size: x-large;
         }
+        input#search_query::placeholder {
+            color: white;
+        }
     }
     
     .last_recipes {

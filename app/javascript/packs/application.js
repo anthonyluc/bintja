@@ -17,3 +17,17 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
+import { loadDynamicSearchText } from '../components/recipe_search';
+import { removeAvatar, deleteAccount } from '../components/sweetalert2';
+
+document.addEventListener('turbolinks:load', () => {
+    // Reload all JS functions here after each load
+
+    if (location.pathname == "/") {
+        loadDynamicSearchText();
+    }
+    if (location.pathname == "/users/edit") {
+        removeAvatar();
+        deleteAccount();
+    }
+  });
