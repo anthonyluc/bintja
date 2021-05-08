@@ -18,7 +18,7 @@ require("channels")
 
 import "controllers"
 import { loadDynamicSearchText } from '../components/recipe_search';
-import { removeAvatar, deleteAccount } from '../components/sweetalert2';
+import { removeAvatar, deleteAccount, deleteRecipe } from '../components/sweetalert2';
 
 document.addEventListener('turbolinks:load', () => {
     // Reload all JS functions here after each load
@@ -29,5 +29,8 @@ document.addEventListener('turbolinks:load', () => {
     if (location.pathname == "/users/edit") {
         removeAvatar();
         deleteAccount();
+    }
+    if (window.location.href.indexOf("recipes") > -1) {
+        deleteRecipe();
     }
   });

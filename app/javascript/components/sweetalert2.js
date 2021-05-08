@@ -1,26 +1,25 @@
 import Swal from 'sweetalert2';
 
-const initSweetalert = (selector, options = {}) => {
+const initSweetalert = (selector, title, url) => {
   const swalButton = document.querySelector(selector);
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopImmediatePropagation();
-        Swal.fire(options).then((result) => {
+        Swal.fire({
+                title: title,
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
             if (result.isConfirmed) {
-
-                if (selector == '#delete_avatar') {
-                    $.ajax({
-                        url: '/avatar',
-                        method: 'DELETE'
-                    });
-                }
-                if (selector == '#delete_account') {
-                    $.ajax({
-                        url: '/users',
-                        method: 'DELETE'
-                    });
-                }
+                $.ajax({
+                    url: url,
+                    method: 'DELETE'
+                });
             }
           })
     });
@@ -28,28 +27,15 @@ const initSweetalert = (selector, options = {}) => {
 };
 
 const removeAvatar = (() => {
-    initSweetalert('#delete_avatar', {
-        title: 'Are you sure to delete your avatar?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    });
+    initSweetalert('#delete_avatar', 'Are you sure to delete your avatar?', '/avatar');
 });
 
 const deleteAccount = (() => {
-    initSweetalert('#delete_account', {
-        title: 'Are you sure? Your Bintja account will be immediately and definitively destroyed.',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    });
+    initSweetalert('#delete_account', 'Are you sure? Your Bintja account will be immediately and definitively destroyed.', '/users');
 });
 
-export { removeAvatar };
-export { deleteAccount };
+const deleteRecipe = (() => {
+    initSweetalert('#delete_recipe', 'Are you sure to delete this recipe?', location.pathname);
+});
+
+export { removeAvatar, deleteAccount, deleteRecipe };

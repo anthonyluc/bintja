@@ -1,4 +1,4 @@
-<div id="home" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('banners/1.jpg') %>) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<div id="home" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path("banners/#{rand(1..100)}.jpg") %>) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <div class='banner'>
         <h1>Cook like a ninja</h1>
         <%= render 'recipes/recipes_search' %>

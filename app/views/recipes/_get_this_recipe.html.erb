@@ -1,9 +1,10 @@
 <div class='add_to_my_cookbook'>
   <% if current_user %>
     <% if current_user.id.to_s != params[:user_id] %>
+      <span data-flash-target='add_recipe'></span>
       <%= form_for @user_recipe,url: user_get_recipe_path(params[:user_id], params[:id]), remote: true do |ur| %>
         <%= ur.text_field :id, value: params[:id], hidden: true %>
-        <%= ur.submit "Get this recipe", class: 'btn btn-primary' %>
+        <%= ur.submit "Get this recipe", class: 'btn btn-primary', :data => { :action => "click->flash#getRecipe" } %>
       <% end %>
     <% else %>
       <button type="button" class="btn btn-outline-primary" disabled>This is my recipe</button>

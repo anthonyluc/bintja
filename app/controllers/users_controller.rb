@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         # Follow button
         follow = Follower.where(follower_id: current_user, followed_id: @user).first
         if  follow != nil
-          @follow = "Unfollow"
+          @follow = "You follow"
         else
           @follow = "Follow"
         end
@@ -103,10 +103,6 @@ class UsersController < ApplicationController
 
         authorize recipe
         authorize user_quantities
-
-        flash[:notice] = 'Successfully copied'
-        redirect_to user_recipe_path(params[:user_id], params[:recipe_id], title: recipe.name)
-
       else
         redirect_to root_path
       end
