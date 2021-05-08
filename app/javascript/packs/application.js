@@ -19,10 +19,10 @@ require("channels")
 import "controllers"
 import { loadDynamicSearchText } from '../components/recipe_search';
 import { removeAvatar, deleteAccount, deleteRecipe } from '../components/sweetalert2';
+import { autoCloseAlert } from '../utils/autoclose_alert';
 
 document.addEventListener('turbolinks:load', () => {
     // Reload all JS functions here after each load
-
     if (location.pathname == "/") {
         loadDynamicSearchText();
     }
@@ -33,4 +33,5 @@ document.addEventListener('turbolinks:load', () => {
     if (window.location.href.indexOf("recipes") > -1) {
         deleteRecipe();
     }
+    autoCloseAlert();
   });

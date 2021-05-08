@@ -2,7 +2,7 @@ class QuantitiesController < ApplicationController
     before_action :quantities_params, only: [:update]
     before_action :set_quantity, only: [:destroy]
     
-    skip_after_action :verify_authorized, only: [:update]
+    skip_after_action :verify_authorized, only: [:update, :destroy]
     
     def shopping_list
         recipes = Recipe.joins(:quantities).where(user: current_user, quantities: {add_shopping_list: true}).distinct
@@ -25,19 +25,18 @@ class QuantitiesController < ApplicationController
     def update
       if params[:recipe] != nil
         yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
-        if yt_video_id != nil
-          recipe = Recipe.includes(:ingredients).where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
-          # MAJ des quantités
+
+        if yt_video_id != nil 
+            recipe = Recipe.includes(:ingredients).where(user: current_user, url_video: "https://www.youtube.com/watch?v=#{yt_video_id}").first
+            # MAJ des quantités
           
-          recipe.update(quantities_params)
-          authorize recipe
+            authorize recipe if recipe.update(@quantities_params)
         end
       end
     end
 
     def destroy
       if @quantity != nil
-        authorize @quantity
         @quantity.destroy 
       end
     end
@@ -46,7 +45,7 @@ class QuantitiesController < ApplicationController
 
     def quantities_params
       if params[:recipe] != nil
-        params.require(:recipe).permit(quantities_attributes: [:id, :quantity, :unity, :add_shopping_list, ingredient_attributes: [:id, :name]])
+       @quantities_params = params.require(:recipe).permit(quantities_attributes: [:id, :quantity, :unity, :add_shopping_list, ingredient_attributes: [:id, :name]])
       end
     end
 

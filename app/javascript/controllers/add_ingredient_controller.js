@@ -53,7 +53,9 @@ export default class extends Controller {
         </td>
       </tr>
       <input type="hidden" value="${data.added.quantity.id}" name="recipe[quantities_attributes][${data.added.counter}][id]" id="recipe_quantities_attributes_${data.added.counter}_id"></input>`;
-      tbody.insertAdjacentHTML("beforeend", ingredient);
+      if (data.added.quantity.id != null) {
+        tbody.insertAdjacentHTML("beforeend", ingredient);
+      }
       this.clear();
       this.quantityTarget.focus();
     });
