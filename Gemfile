@@ -53,6 +53,8 @@ gem 'sidekiq-failures', '~> 1.0'
 # Pour le lancement automatisé
 gem 'sidekiq-cron'
 
+gem 'cookies_eu'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

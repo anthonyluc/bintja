@@ -1,0 +1,33 @@
+#cookies-eu-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffe100;
+    padding: 10px;
+    text-align: center;
+    color: black;
+
+    a, a:hover{
+        color: black;
+        font-weight: bold;
+    }
+
+    button#cookies-eu-reject {
+        background-color: #f73625;
+        color: white;
+    }
+    button#cookies-eu-accept {
+        background-color: #13b213;
+        color: white;
+    }
+
+    button {
+        margin-left: 1rem;
+        border-radius: 5px;
+        padding: 4px 2rem;
+        border: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

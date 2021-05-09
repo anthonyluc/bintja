@@ -2,10 +2,10 @@
   <div class='container'>
     <div class='bottom-footer'>
         <div class='legal'>
-            Terms & Conditions | Privacy Policy | Cookie Consent
+           <%= link_to 'Terms & Conditions', cgu_path %>  | <%= link_to 'Privacy Policy', privacy_policy_path %>  | <%= link_to 'Cookie Consent', cookie_consent_path %> 
         </div>
         <div class='copyright'>
-        © 2021 Bintja - All Rights Reserved.
+        © 2021 <%= link_to 'Bintja', root_path %> - All Rights Reserved.
         </div>
     </div>
   </div>
