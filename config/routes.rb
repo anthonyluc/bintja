@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/underground', as: 'rails_admin'
   # Redirection routes utilisateurs  
   devise_for :users, :controllers => { :registrations => :registrations, :passwords => :passwords }
 
@@ -7,8 +8,9 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   authenticate :user, ->(user) { user.admin? && user.admin_level == 1} do
     mount Sidekiq::Web => '/sidekiq'
+    mount Blazer::Engine, at: "blazer"
   end
-
+  
   root to: 'pages#home'
  
   get 'cgu', to: 'pages#cgu'

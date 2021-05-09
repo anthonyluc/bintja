@@ -54,6 +54,10 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'sidekiq-cron'
 
 gem 'cookies_eu'
+# Interface admin
+gem 'rails_admin'
+# Graphique Bdd
+gem 'blazer' 
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
