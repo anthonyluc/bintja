@@ -12,11 +12,14 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :social_networks, dependent: :destroy
   has_many :reviews
+  has_many :recipe_rates, dependent: :destroy
   has_many :quantities, through: :recipes
   has_many :recipe_groups, dependent: :delete_all
 
   # Initialize social_networks for this new user
   after_create :create_social_networks
+
+  private
 
   def create_social_networks
     user = User.last

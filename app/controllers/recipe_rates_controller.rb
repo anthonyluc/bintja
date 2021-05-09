@@ -11,7 +11,7 @@ class RecipeRatesController < ApplicationController
             recipe_rate = RecipeRate.new(stars: @recipe_rate[:stars], video_id: video_id, user: current_user)
             recipe_rate.save
         else
-            RecipeRate.update(stars: @recipe_rate[:stars])
+            recipe_rate.update(stars: @recipe_rate[:stars])
         end
         authorize recipe_rate
         

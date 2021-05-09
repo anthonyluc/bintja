@@ -46,6 +46,7 @@ export default class extends Controller {
     }
     addReviews(){
         this.initSweetalert('Review added successfully.');
+        this.btn_reviewsTarget.removeAttribute("disabled");
     }
     addRecipe(){
         this.initSweetalert('Recipe successfully added to your cookbook.');

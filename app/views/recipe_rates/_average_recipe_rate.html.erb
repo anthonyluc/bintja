@@ -1,8 +1,8 @@
 <div class='average_recipe_rate'>
-    <% @recipe_rate.times do %>
+    <% @recipe_rate_all.times do %>
         <%= image_tag("star_on.svg", class: "stars star_on") %>
     <% end %>
-    <% (5-@recipe_rate).times do %>
+    <% (5-@recipe_rate_all).times do %>
         <%= image_tag("star_off.svg", class: "stars star_off") %>
     <% end %>
     <div class='counter'>(<%= @recipe_rate_count %>)</div>

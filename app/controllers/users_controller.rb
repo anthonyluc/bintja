@@ -53,8 +53,20 @@ class UsersController < ApplicationController
               @add_reviews = Review.new
               @add_recipe_rate = RecipeRate.new
               @reviews = Review.includes(:user).where(video_id: yt_video_id).order(created_at: :desc)
-              @recipe_rate = RecipeRate.where(video_id: yt_video_id).average(:stars).to_i
+              @recipe_rate_all = RecipeRate.where(video_id: yt_video_id).average(:stars).to_i
               @recipe_rate_count = RecipeRate.where(video_id: yt_video_id).count
+
+              # Recipe Rate user
+              if current_user
+                @recipe_rate_user = RecipeRate.where(video_id: yt_video_id, user: current_user).first
+                if @recipe_rate_user == nil
+                  @recipe_rate_user = 3
+                else
+                  @recipe_rate_user = @recipe_rate_user.stars
+                end
+              else
+                @recipe_rate_user = 3
+              end
 
               authorize @quantities
               authorize @recipe

@@ -11,7 +11,7 @@
                     <% end %>
                 </div>
                 <div class='comment_right'>
-                    <%= form_for @add_reviews, url: reviews_path, method: :post do |r| %>
+                    <%= form_for @add_reviews, url: reviews_path, method: :post, remote: true do |r| %>
                         <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control add_comment', placeholder: 'add a comment...', :data => { :'add-reviews-target' => 'comment' } %>
                 </div>
             </div>

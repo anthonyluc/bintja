@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
         @url_video = "https://www.youtube.com/watch?v=#{@yt_video_id}"
         @user = current_user
         # @recipe_rate = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
-        @recipe_rate = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
+        @recipe_rate_all = RecipeRate.where(video_id: @yt_video_id).average(:stars).to_i
         @recipe_rate_count = RecipeRate.where(video_id: @yt_video_id).count
         @add_recipe_rate = RecipeRate.new
         @add_reviews = Review.new
@@ -46,6 +46,18 @@ class RecipesController < ApplicationController
         else
             @bt_add_recipe  = "Add to my recipes"
         end
+        #Recipe rate user
+        if current_user
+          @recipe_rate_user = RecipeRate.where(video_id: @yt_video_id, user: current_user).first
+          if @recipe_rate_user == nil
+            @recipe_rate_user = 3
+          else
+            @recipe_rate_user = @recipe_rate_user.stars
+          end
+        else
+          @recipe_rate_user = 3
+        end
+
     end
 
     def create
