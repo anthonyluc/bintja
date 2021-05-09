@@ -7,4 +7,32 @@
     .recipes_results{
         margin-bottom: 2rem;
     }
+
+    .recipe_text {
+        display: none;
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) { 
+
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) { 
+        .recipe_text {
+            display: inline-block !important;
+        }
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) { 
+        .last_recipes {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { 
+
+    }
 }

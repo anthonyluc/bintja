@@ -19,17 +19,16 @@
       display: flex;
       justify-content: space-between;
       .btn-primary {
-          margin-left: 10px;
           color: white;
       }
       .selected {
         display: flex;
         flex-direction: column;
         place-items: flex-end;
-        .select_recipe_group {
-          margin-bottom: 15px;
-        }
       }
+      .form-group {
+        margin-bottom: 0px;
+    }
     }
     .my_recipes{
       display: grid;

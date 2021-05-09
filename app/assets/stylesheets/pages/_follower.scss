@@ -1,6 +1,12 @@
 #follower{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+
+    h2 {
+        text-align: center;
+        color: $green;
+        margin-bottom: 2rem;
+    }
 
     .col-left, .col-right {
         background-color: white;
@@ -15,14 +21,44 @@
         }
     }
 
-    .users_cards {
+    .users_cards, .followers_cards {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         gap: 1rem;
         text-align: center;
 
         .card {
             padding: 1rem 0px;
         }
+    }    
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    #follower{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    #follower{
+        .users_cards, .followers_cards{
+            grid-template-columns: repeat(2, 1fr);
+        }    
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    #follower{
+        .users_cards, .followers_cards{
+            grid-template-columns: repeat(3, 1fr);
+        }    
     }
 }
