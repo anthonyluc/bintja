@@ -46,3 +46,4 @@ staging:
 
 production:
   <<: *default_settings
+  app_name: Bintja (Production)
