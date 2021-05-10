@@ -16,7 +16,7 @@ GIT
     kaminari-core (1.2.1)
 
 PATH
-  remote: app/services
+  remote: my_gems
   specs:
     youtube_addy (1.0.4)
 
@@ -133,7 +133,7 @@ GEM
     erubi (1.10.0)
     et-orbi (1.2.4)
       tzinfo
-    execjs (2.7.0)
+    execjs (2.8.0)
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
