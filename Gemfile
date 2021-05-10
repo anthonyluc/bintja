@@ -44,7 +44,7 @@ gem 'open-uri'
 gem 'json'
 
 # Show Youtube video
-gem 'youtube_addy'
+gem 'youtube_addy', path: "app/services"
 
 # Lancement des tâches de fond
 gem 'sidekiq'
