@@ -180,6 +180,7 @@ GEM
     msgpack (1.4.2)
     nested_form (0.3.2)
     netrc (0.11.0)
+    newrelic_rpm (7.0.0)
     nio4r (2.5.7)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
@@ -363,6 +364,7 @@ DEPENDENCIES
   json
   kaminari!
   listen (~> 3.2)
+  newrelic_rpm
   open-uri
   pg (>= 0.18, < 2.0)
   pry-byebug
