@@ -46,6 +46,8 @@ gem 'json'
 # Show Youtube video
 gem 'youtube_addy', path: "my_gems"
 
+gem 'execjs', '~> 2.7.0'
+
 # Lancement des tâches de fond
 gem 'sidekiq'
 # Show failures in Sidekiq admin
