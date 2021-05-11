@@ -16,7 +16,7 @@
         position: relative;
         display: block;
         float: right;
-        background-image: url('/assets/star_off.svg');
+        background-image: asset-url('star_off.svg');
         background-size: 30px 30px;
         cursor: pointer;
     }
@@ -27,7 +27,7 @@
         content: '';
         width: 30px;
         height: 30px;
-        background-image: url('/assets/star_on.svg');
+        background-image: asset-url('star_on.svg');
         background-size: 30px 30px;
         transition: opacity 0.2s linear;
     }
