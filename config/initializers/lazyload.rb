@@ -5,5 +5,5 @@ Lazyload::Rails.configure do |config|
   
     # image_tag can return lazyload-friendly images by default,
     # no need to pass the { lazy: true } option
-    config.lazy_by_default = true
+    # config.lazy_by_default = true
 end
