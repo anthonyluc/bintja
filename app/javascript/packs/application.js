@@ -20,6 +20,7 @@ import { loadDynamicSearchText } from '../components/recipe_search';
 import { removeAvatar, deleteAccount, deleteRecipe } from '../components/sweetalert2';
 import { autoCloseAlert } from '../utils/autoclose_alert';
 import { cookiesLauncher } from '../components/cookies_launcher';
+import { lazyload } from '../utils/lazyload';
 
 document.addEventListener('turbolinks:load', () => {
     // Reload all JS functions here after each load
@@ -35,4 +36,8 @@ document.addEventListener('turbolinks:load', () => {
     }
     autoCloseAlert();
     cookiesLauncher();
+    $("img").lazyload();
   });
+
+  
+ 

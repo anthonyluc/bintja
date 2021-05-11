@@ -2,7 +2,7 @@
   <% @recipes[:url].each_with_index do |url, index| %>
     <div class='recipe_card'>
       <a href="<%= recipe_path(url.gsub('https://www.youtube.com/watch?v=',''), title: @recipes[:title][index]) %>">
-        <%= image_tag(@recipes[:img][index], size: "640x360")%>
+        <%= image_tag(@recipes[:img][index], size: "640x360", lazy: true) %>
         <div class="card-infos">
           <h2><%= @recipes[:title][index].downcase.capitalize %></h2>
           

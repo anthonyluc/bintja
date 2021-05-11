@@ -1,7 +1,7 @@
 <div class='add_reviews'>
     <div data-flash-target='add_reviews'></div>
     <% if current_user %>
-        <% if @bt_add_recipe != 'to_add' %>
+        <% if @bt_add_recipe != 'to_add' || @recipe_exist != nil %>
             <div class='comment'>
                 <div class='comment_left'>
                     <% if current_user.avatar.attached? %>

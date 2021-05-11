@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
                 @user_recipe = Recipe.new
             end
         else
-            @bt_add_recipe  = "Add to my recipes"
+          @bt_add_recipe  = "Add to my recipes"
         end
         #Recipe rate user
         if current_user
@@ -57,7 +57,8 @@ class RecipesController < ApplicationController
         else
           @recipe_rate_user = 3
         end
-
+        # Current_user can add a comment if @recipe_exist
+        @recipe_exist = Recipe.where(url_video: @url_video).first
     end
 
     def create

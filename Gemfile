@@ -62,6 +62,8 @@ gem 'cookies_eu'
 gem 'rails_admin'
 # Graphique Bdd
 gem 'blazer' 
+# Optimisation chargement des images
+gem "lazyload-rails"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
