@@ -8,7 +8,7 @@ class PagesController < ApplicationController
         @users_recipes << Recipe.where(user: u, show: true).count
       end
 
-      @recipes = Recipe.last(9).reverse
+      @recipes = Recipe.limit(12).select(:url_video, :url_image, :name).distinct.last(50)
     end
 
     def cgu
