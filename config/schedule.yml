@@ -1,5 +1,5 @@
 shopping_list_email:
   #cron: "0 12 * * *"
-  cron: "30 15 * * * Europe/Paris"
+  cron: "10 * * * * Europe/Paris"
   class: "ShoppingListEmailJob"
   queue: mailers
