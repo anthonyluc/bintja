@@ -2,7 +2,7 @@
     <h1>Your shopping list</h1>
 
     <div class='shopping_note'>
-        <%= @shopping_note %>
+        <%= simple_format(@shopping_note) %>
     </div>
 
     <div class='quantities_list'>
@@ -11,4 +11,6 @@
             <%= link_to(tab[3], recipe_url(tab[4].gsub('https://www.youtube.com/watch?v=',''), title: tab[3])) %><br>
         <% end %>
     </div>
+    <br>
+    <b><%= link_to "Bintja.com", root_url %></b>
 </div>

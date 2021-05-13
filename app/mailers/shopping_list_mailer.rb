@@ -1,5 +1,7 @@
 class ShoppingListMailer < ApplicationMailer
     include Rails.application.routes.url_helpers
+    require 'date'
+    require 'active_support/core_ext/date'
     
     def send_shopping_list(user, shopping_note)
         @user = user
@@ -15,6 +17,6 @@ class ShoppingListMailer < ApplicationMailer
             end
         end
 
-        mail(to: @user.email, subject: "Your shopping list to buy")
+        mail(to: @user.email, subject: "Your shopping list of #{Date.today}")
     end
 end
