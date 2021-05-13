@@ -11,6 +11,7 @@
             <div class='col-right'>
                 <%= render "recipes/recipe_video" %>
                 <%= render "ingredients/add_ingredient" %>
+                <% content_for :title, params[:title] %>
                 <h1><%= params[:title] %></h1>
                 <div class="rate">
                     <%= render "recipe_rates/average_recipe_rate" %>

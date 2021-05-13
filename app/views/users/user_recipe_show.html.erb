@@ -8,6 +8,7 @@
     <div class='main-content'>
         <div class='col-right'>
           <%= render "recipes/recipe_video" %>
+          <% content_for :title, params[:title] %>
           <h1><%= params[:title] %></h1>
           <div class='preparation_cooking_time'>
             <div class='preparation_time'>

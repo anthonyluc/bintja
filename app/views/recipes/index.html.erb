@@ -1,5 +1,6 @@
 <div class='container'>
     <div id="recipes_search_results">
+        <% content_for :title, params[:search][:query ] %>
         <br>
         <%= render "recipes/recipes_search" %>
         <br>

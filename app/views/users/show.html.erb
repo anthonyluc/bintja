@@ -1,6 +1,7 @@
 <div class='container'>
     <div id="users_cookbook">
         <div class='title_line'>
+            <% content_for :title, "#{@user.nickname}'s cookbook" %>
             <h1><%= @user.nickname %>'s cookbook</h1>
             <%= render "social_networks/social_networks_icons"%>
         </div>

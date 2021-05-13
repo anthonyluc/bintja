@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bintja</title>
+    <title><%= raw "#{yield(:title)} - " if yield(:title).presence %>Bintja</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
