@@ -8,7 +8,7 @@
     <div class='quantities_list'>
         <% @quantities_tab.sort_by{|a| a[0]}.each do |tab| %>
             <b><%= "#{tab[0].capitalize} (#{tab[1]} #{tab[2]}) : " %></b>
-            <%= link_to(tab[3], recipe_path(tab[4].gsub('https://www.youtube.com/watch?v=',''), title: tab[3])) %><br>
+            <%= link_to(tab[3], recipe_url(tab[4].gsub('https://www.youtube.com/watch?v=',''), title: tab[3])) %><br>
         <% end %>
     </div>
 </div>

@@ -1,4 +1,6 @@
 class ShoppingListMailer < ApplicationMailer
+    include Rails.application.routes.url_helpers
+    
     def send_shopping_list(user, shopping_note)
         @user = user
         @shopping_note = shopping_note
