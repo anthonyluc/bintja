@@ -39,9 +39,15 @@ class ApplicationController < ActionController::Base
     end
   
     def after_sign_in_path_for(resource)
-      previous_path = session[:previous_url]
-      session[:previous_url] = nil
-      previous_path || root_path
+      if resource.is_a?(User) && resource.blocked == true
+        sign_out resource
+        flash.alert = "This user has been blocked. Send an email at contact@bintja.com if you think its an error."
+        root_path
+      else
+        previous_path = session[:previous_url]
+        session[:previous_url] = nil
+        previous_path || root_path
+      end
     end
   
     protected

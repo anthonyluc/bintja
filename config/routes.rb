@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:show] do
     resources :quantities, only: [:destroy]
   end
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :destroy]
   resources :recipe_rates, only: [:create]
   resources :ingredients, only: [:index, :show, :create]
   resources :quantities, only: [:update]

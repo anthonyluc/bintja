@@ -38,4 +38,4 @@ const deleteRecipe = (() => {
     initSweetalert('#delete_recipe', 'Are you sure to delete this recipe?', location.pathname);
 });
 
-export { removeAvatar, deleteAccount, deleteRecipe };
+export { initSweetalert, removeAvatar, deleteAccount, deleteRecipe };

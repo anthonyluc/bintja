@@ -5,6 +5,15 @@
         align-items: flex-start;
         margin-bottom: 1rem;
 
+        .delete_review{
+            display: none;
+        }
+        &:hover{
+            .delete_review{
+                display: inline-block;
+            }
+        }
+
         .comment_left {
             margin-right: 10px;
         }

@@ -1,23 +1,27 @@
 <div class='add_reviews'>
     <div data-flash-target='add_reviews'></div>
     <% if current_user %>
-        <% if @bt_add_recipe != 'to_add' || @recipe_exist != nil %>
-            <div class='comment'>
-                <div class='comment_left'>
-                    <% if current_user.avatar.attached? %>
-                        <%= image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
-                    <% else %>
-                        <%= image_tag "avatar_default.svg", class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
-                    <% end %>
+        <% if current_user.blocked == false %>
+            <% if @bt_add_recipe != 'to_add' || @recipe_exist != nil %>
+                <div class='comment'>
+                    <div class='comment_left'>
+                        <% if current_user.avatar.attached? %>
+                            <%= image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                        <% else %>
+                            <%= image_tag "avatar_default.svg", class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                        <% end %>
+                    </div>
+                    <div class='comment_right'>
+                        <%= form_for @add_reviews, url: reviews_path, method: :post, remote: true do |r| %>
+                            <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control add_comment', placeholder: 'add a comment...', :data => { :'add-reviews-target' => 'comment' } %>
+                    </div>
                 </div>
-                <div class='comment_right'>
-                    <%= form_for @add_reviews, url: reviews_path, method: :post, remote: true do |r| %>
-                        <%= r.text_area :comment, :value => @add_reviews.comment, class: 'form-control add_comment', placeholder: 'add a comment...', :data => { :'add-reviews-target' => 'comment' } %>
-                </div>
-            </div>
-                        <%= r.hidden_field :url, value: request.original_url, hidden: true, :data => { :'add-reviews-target' => 'url' } %>
-                        <%= r.submit "Add reviews", class: 'btn btn-outline-primary btn-review', :data => { :action => "click->add-reviews#addReview click->flash#addReviews", :'add-reviews-target' => 'btn' } %>
-                    <% end %>
+                            <%= r.hidden_field :url, value: request.original_url, hidden: true, :data => { :'add-reviews-target' => 'url' } %>
+                            <%= r.submit "Add reviews", class: 'btn btn-outline-primary btn-review', :data => { :action => "click->add-reviews#addReview click->flash#addReviews", :'add-reviews-target' => 'btn', :'flash-target' => 'btn_review' } %>
+                        <% end %>
+            <% end %>
+        <% else %>
+            <div class='btn btn-outline-dark' >Your account has been blocked</div>
         <% end %>
     <% else %>
         <%= link_to "Log in to add a review", user_session_path, class: 'btn btn-primary btn-log' %>

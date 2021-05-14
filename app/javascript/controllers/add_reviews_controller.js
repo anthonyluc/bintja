@@ -8,7 +8,9 @@ export default class extends Controller {
     this.btnTarget.removeAttribute("disabled");
   }
 
-  addReview() {
+  addReview(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
     this.btnTarget.disabled = true;
 
     if (this.commentTarget.value != ''){

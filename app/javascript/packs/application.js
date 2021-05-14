@@ -34,6 +34,7 @@ document.addEventListener('turbolinks:load', () => {
     if (window.location.href.indexOf("recipes") > -1) {
         deleteRecipe();
     }
+
     autoCloseAlert();
     cookiesLauncher();
     $("img").lazyload();

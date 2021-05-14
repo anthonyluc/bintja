@@ -13,7 +13,9 @@ class ShoppingListEmailJob < ApplicationJob
     end
 
     shopping_lists.each do |s|
-      ShoppingListMailer.send_shopping_list(s.user, s.shopping_note).deliver_later
+      if s.user.blocked == false
+        ShoppingListMailer.send_shopping_list(s.user, s.shopping_note).deliver_later
+      end
     end
   end
 end

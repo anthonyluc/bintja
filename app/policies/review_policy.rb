@@ -9,6 +9,10 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    record.user == user
+  end
+
   def user_recipe_show?
     true
   end

@@ -1,6 +1,6 @@
-<div class='index_reviews' data-add-reviews-target='index_reviews'>
+<div class='index_reviews' data-add-reviews-target='index_reviews' data-controller='destroy-review'>
     <% @reviews.each do |r| %>
-        <div class='comment'>
+        <div class='comment' data-destroy-review-target='review'>
             <div class='comment_left'>
                 <%= link_to user_path(r.user.id) do %>
                     <% if r.user.avatar.attached? %>
@@ -12,7 +12,11 @@
             </div>
             <div class='comment_right'>
                 <div class='comment_from'>
-                    <b><%= link_to r.user.nickname, user_path(r.user.id) %></b> <span class='time_ago'><%= time_ago_in_words(r.created_at) %></span>
+                    <b><%= link_to r.user.nickname, user_path(r.user.id) %></b> 
+                    <span class='time_ago'><%= time_ago_in_words(r.created_at) %></span>
+                    <% if current_user == r.user %>
+                        <span class='remove_comment'><small><%= link_to 'Delete', review_path(r.id), method: :delete, class: 'delete_review', :data => { :action => "click->destroy-review#destroy", :'destroy-review-target' => 'btn',  :'id' => r.id} %></small></span>
+                    <% end%>
                 </div>
                 <div class='comment_content'>
                     <%= r.comment %>

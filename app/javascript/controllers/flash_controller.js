@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 import Swal from 'sweetalert2';
 
 export default class extends Controller {
-  static targets = ['add_recipe_rate', 'add_recipe', 'add_reviews', 'add_ingredient', 'delete_ingredient', 'add_quantity_note', 'update_quantities', 'notice_note', 'recipe_group', 'get_recipe'];
+  static targets = ['add_recipe_rate', 'add_recipe', 'add_reviews', 'btn_review', 'add_ingredient', 'delete_ingredient', 'add_quantity_note', 'update_quantities', 'notice_note', 'recipe_group', 'get_recipe'];
 
     initSweetalert(message) {
         Swal.fire({
@@ -46,7 +46,7 @@ export default class extends Controller {
     }
     addReviews(){
         this.initSweetalert('Review added successfully.');
-        this.btn_reviewsTarget.removeAttribute("disabled");
+        this.btn_reviewTarget.removeAttribute("disabled");
     }
     addRecipe(){
         this.initSweetalert('Recipe successfully added to your cookbook.');
