@@ -11,7 +11,7 @@ class QuantitiesController < ApplicationController
         @quantities_tab = []
   
         recipes.each do |r|
-           quantities = Quantity.includes(:ingredient).where(recipe: r)
+           quantities = Quantity.includes(:ingredient).where(recipe: r, add_shopping_list: true)
            quantities.each do |q|
             @quantities_tab << [q.ingredient.name.downcase , q.quantity, q.unity, q.recipe.name, YouTubeAddy.extract_video_id(q.recipe.url_video)]
            end
