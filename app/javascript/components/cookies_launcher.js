@@ -8,7 +8,7 @@ const cookiesLauncher = () => {
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   
     // Don't forget to put your own UA-XXXXXXXX-X code
-    ga('create', 'UA-XXXXXXXX-X', 'auto');
+    ga('create', '272422885', 'auto');
     ga('send', 'pageview');
   }, true);
 }
