@@ -20,7 +20,7 @@
           </div>
           <% if @recipe.note_private == false && @recipe.note.present? %>
             <div class='user_recipe_note'>
-              <%= @recipe.note %>
+              <%= simple_format(@recipe.note) %>
             </div>
           <% end %>
           <div class="rate">
