@@ -1,7 +1,7 @@
-<div class="delete_private_recipe_group">
+<div class="delete_private_recipe_group" data-controller="destroy-recipe-group">
   <% if params[:group].present? %>
     <% if params[:group][:id].present? %>
-      <%= link_to "Delete group", recipe_group_path(params[:group][:id]), method: :delete, remote: true  %> |
+      <%= link_to "Delete group", recipe_group_path(params[:group][:id]), method: :delete, remote: true, :data => { :action => "click->destroy-recipe-group#destroy", :'destroy-recipe-group-target' => 'btn',  :'id' => params[:group][:id]}  %> |
       <%= link_to "Private group", recipe_group_path(params[:group][:id]), method: :put, remote: true  %>
       <%= 'Private' if @group.private %>
     <% end %>

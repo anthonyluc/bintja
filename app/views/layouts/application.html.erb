@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <script data-ad-client="ca-pub-6039446140707780" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <%# render 'adsense/headers_ad_client' %>
     <%= render 'shared/google_analytics' %>
     <%= render 'shared/facebook_pixel' %>
   </head>
@@ -18,9 +18,9 @@
   <body data-controller="flash">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-      <% unless current_page?(root_path) %>
-        <%= render 'adsense/horizontal_responsive' %>
-      <% end %>
+      <%# unless current_page?(root_path) %>
+        <%# render 'adsense/horizontal_responsive' %>
+      <%# end %>
       <%= yield %>
       
   </body>
