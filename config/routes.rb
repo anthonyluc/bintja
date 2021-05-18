@@ -15,7 +15,6 @@ Rails.application.routes.draw do
  
   get 'cgu', to: 'pages#cgu'
   get 'privacy_policy', to: 'pages#privacy_policy'
-  get 'cookie_consent', to: 'pages#cookie_consent'
   get 'follow', to: 'followers#index'
   get 'my_cookbook', to: 'recipes#my_cookbook'
   get 'shopping_list', to: 'quantities#shopping_list'
