@@ -47,8 +47,6 @@ gem 'json'
 gem 'youtube_addy', path: "my_gems"
 
 gem 'execjs', '~> 2.7.0'
-# Heroku monitor for keep alive
-gem 'newrelic_rpm'
 
 # Lancement des tâches de fond
 gem 'sidekiq'

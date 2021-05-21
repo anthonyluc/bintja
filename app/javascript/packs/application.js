@@ -39,6 +39,3 @@ document.addEventListener('turbolinks:load', () => {
     cookiesLauncher();
     $("img").lazyload();
   });
-
-  
- 

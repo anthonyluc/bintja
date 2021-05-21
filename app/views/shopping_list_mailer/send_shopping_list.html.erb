@@ -1,5 +1,6 @@
 <div class='shopping_list_mailer'>
-    <h1>Your shopping list</h1>
+    <h1>Hi @user.nickname </h1>
+    <h2>Your shopping list</h2>
 
     <div class='shopping_note'>
         <%= simple_format(@shopping_note) %>
@@ -11,6 +12,10 @@
             <%= link_to(tab[3], recipe_url(tab[4].gsub('https://www.youtube.com/watch?v=',''), title: tab[3])) %><br>
         <% end %>
     </div>
+    <br>
+    <small>
+        <i>To stop receiving this email, go to your <%= link_to "Shopping list", shopping_list_url %> and uncheck the option.</i>
+    </small>
     <br>
     <b><%= link_to "Bintja.com", root_url %></b>
 </div>

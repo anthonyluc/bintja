@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:home, :cgu, :privacy_policy, :cookie_consent]
+    skip_before_action :authenticate_user!, only: [:home, :cgu, :privacy_policy]
 
     def home
       @users = User.order('random()').limit(8)
@@ -17,6 +17,4 @@ class PagesController < ApplicationController
     def privacy_policy
     end
 
-    def cookie_consent
-    end
 end
