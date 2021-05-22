@@ -11,6 +11,8 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%# render 'adsense/headers_ad_client' %>
+    <%= render 'facebook/pixel' %>
+    <%= render 'google/analytics' %>
   </head>
 
   <body data-controller="flash">
