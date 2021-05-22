@@ -2,7 +2,7 @@
     <% @reviews.each do |r| %>
         <div class='comment' data-destroy-review-target='review'>
             <div class='comment_left'>
-                <%= link_to user_path(r.user.id) do %>
+                <%= link_to user_path(r.user.nickname) do %>
                     <% if r.user.avatar.attached? %>
                         <%= image_tag r.user.avatar, class: "avatar" %>
                     <% else %>

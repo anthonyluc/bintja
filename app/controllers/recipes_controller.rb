@@ -38,7 +38,6 @@ class RecipesController < ApplicationController
               # group
               @groups = policy_scope(RecipeGroup).order(created_at: :desc)
               @selected = user_recipe.recipe_group_id
-    
             else
                 @bt_add_recipe = 'to_add'
                 @user_recipe = Recipe.new
