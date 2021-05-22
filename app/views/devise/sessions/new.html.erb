@@ -3,12 +3,15 @@
     <div class="avatar"><i class="fa fa-user-ninja"></i></div>
     <h4 class="modal-title">Login to Your Account</h4>
     <div class="form-inputs">
-      <%= f.input :email,
-                  label: false,
-                  placeholder: "Email",
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
+      <div class='form-group'>
+        <%= f.text_field :login,
+                    label: false,
+                    placeholder: "Nickname or Email",
+                    required: false,
+                    autofocus: true,
+                    class: 'form-control',
+                    input_html: { autocomplete: "login" } %>
+      </div>
       <%= f.input :password,
                   label: false,
                   placeholder: "Password",
