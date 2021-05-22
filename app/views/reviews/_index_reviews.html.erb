@@ -12,7 +12,7 @@
             </div>
             <div class='comment_right'>
                 <div class='comment_from'>
-                    <b><%= link_to r.user.nickname, user_path(r.user.id) %></b> 
+                    <b><%= link_to r.user.nickname, user_path(r.user.nickname) %></b> 
                     <span class='time_ago'><%= time_ago_in_words(r.created_at) %></span>
                     <% if current_user == r.user %>
                         <span class='remove_comment'><small><%= link_to 'Delete', review_path(r.id), method: :delete, class: 'delete_review', :data => { :action => "click->destroy-review#destroy", :'destroy-review-target' => 'btn',  :'id' => r.id} %></small></span>

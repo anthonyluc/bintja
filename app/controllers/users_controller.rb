@@ -2,10 +2,10 @@ class UsersController < ApplicationController
     before_action :get_recipe_params, only: [:get_recipe]
 
     skip_before_action :authenticate_user!, only: [:show, :user_recipe_show]
-    skip_after_action :verify_authorized, only: [:show]
+    skip_after_action :verify_authorized, only: [:show, :user_recipe_show]
 
     def show
-        @user = User.find(params[:id])
+        @user = User.where(nickname: params[:id]).first
       
         @social_networks = SocialNetwork.where(user: @user).first
 
@@ -43,8 +43,8 @@ class UsersController < ApplicationController
     def user_recipe_show
       yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:id]}")
       @url_video = "https://www.youtube.com/watch?v=#{yt_video_id}"
-      @user = params[:user_id]
-      if @user    
+      @user = User.where(nickname: params[:user_id]).first
+      if @user
           user_recipe = Recipe.includes(:quantities).includes(:ingredients).where(user: @user, url_video: @url_video).first
           if user_recipe.present?
               @quantities = Quantity.where(recipe_id: user_recipe.id)
@@ -100,7 +100,8 @@ class UsersController < ApplicationController
         end
 
         # Copy Ingredients
-        user_recipe = Recipe.where(user: params[:user_id], url_video: @recipe.values[0][:url]).first
+        user = User.where(nickname: params[:user_id]).first
+        user_recipe = Recipe.where(user: user.id, url_video: @recipe.values[0][:url]).first
         user_quantities = Quantity.where(recipe_id: user_recipe.id)
         user_quantities.each do |q|
           # On vérifie l'existence

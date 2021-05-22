@@ -28,13 +28,13 @@ export default class extends Controller {
         const review = `
           <div class="comment">
               <div class="comment_left">
-                  <a href="/users/${data.user_id}">
+                  <a href="/users/${data.nickname}">
                           <img class="avatar" src="${this.avatarTarget.src}">
                   </a>
               </div>
               <div class="comment_right">
                   <div class="comment_from">
-                      <b><a href="/users/${data.user_id}">${data.nickname}</a></b> <span class="time_ago">just now</span>
+                      <b><a href="/users/${data.nickname}">${data.nickname}</a></b> <span class="time_ago">just now</span>
                   </div>
                   <div class="comment_content">
                       ${this.commentTarget.value}

@@ -32,7 +32,8 @@ class FollowersController < ApplicationController
     end
 
     def follow
-      follow = Follower.where(follower_id: current_user.id, followed_id: params[:user_id]).first
+      user = User.where(nickname: params[:user_id]).first
+      follow = Follower.where(follower_id: current_user.id, followed_id: user.id).first
       
       # Si user follow déjà
       if follow != nil
@@ -41,9 +42,9 @@ class FollowersController < ApplicationController
         follow.destroy
       else 
         # Sinon on crée
-        follow = Follower.create(follower_id: current_user.id, followed_id: params[:user_id])
+        follow = Follower.create(follower_id: current_user.id, followed_id: user.id)
         authorize follow
       end
-      redirect_to user_path(params[:user_id])
+      redirect_to user_path(user.nickname)
     end
 end

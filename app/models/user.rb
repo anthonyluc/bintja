@@ -44,6 +44,10 @@ class User < ApplicationRecord
     end
   end
 
+  def to_param
+    nickname
+  end
+
   private
 
   def create_social_networks
