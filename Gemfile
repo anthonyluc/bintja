@@ -63,6 +63,9 @@ gem 'blazer'
 # Optimisation chargement des images
 gem "lazyload-rails"
 
+# Active storage validation
+gem "active_storage_validations"
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

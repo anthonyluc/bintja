@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validate :validate_nickname
 
   has_one_attached :avatar
+  validates :avatar,
+            content_type: [:png, :jpg, :jpeg],
+            size: { less_than: 2.megabytes , message: 'must be less than 2MB in size' }
   has_one :shopping_list, dependent: :destroy
   has_many :recipes, dependent: :destroy
   has_many :social_networks, dependent: :destroy
