@@ -54,6 +54,20 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
+    h3{
+        margin: 2rem;
+        color: $green;
+    }
+
+    .steps {
+        align-items: center;
+        text-align: center;
+        i {
+            font-size: xxx-large;
+            margin: 1rem;
+            color: green;
+        }
+    }
     // Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) { 
         .last_recipes {
@@ -69,6 +83,11 @@
     @media (min-width: 768px) { 
         .recipe_text {
             display: inline-block !important;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
         }
     }
 
