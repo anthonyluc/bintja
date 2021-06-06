@@ -68,6 +68,7 @@
             color: green;
         }
     }
+
     // Small devices (landscape phones, 576px and up)
     @media (min-width: 576px) { 
         .last_recipes {
@@ -76,6 +77,11 @@
 
         .users_cards {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        .bintja_presentation{
+            margin: auto;
+            width: 100%;
         }
     }
 
@@ -88,6 +94,10 @@
         .steps {
             display: flex;
             justify-content: space-around;
+        }
+
+        .bintja_presentation{
+            width: 560px;
         }
     }
 
