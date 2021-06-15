@@ -1,5 +1,5 @@
 <div class='container'>
-    <div id="my-cookbook">
+    <div id="my-cookbook" <%= "class=my_cookbook_mobile" if mobile? %>>
         <div class='title_line'>
             <% content_for :title, "My cookbook" %>
             <h1>My cookbook</h1>

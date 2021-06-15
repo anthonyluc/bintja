@@ -66,6 +66,7 @@
         .preparation_cooking_time{
           display: flex;
           justify-content: space-around;
+          flex-direction: column;
           text-align: center;
           input{
             border: none;
@@ -124,6 +125,10 @@
       .main-content .rate{
           flex-direction: row;
         }
+
+      .preparation_cooking_time{
+        flex-direction: row !important;
+      }
     }
 
     // Large devices (desktops, 992px and up)
@@ -140,3 +145,14 @@
     }
 }
 
+.recipe_show_mobile{
+  h1{
+    font-size: 1.5rem;
+  }
+  select#recipe_id {
+    font-size: 0.75rem;
+  }
+  input.btn {
+    font-size: 0.75rem;
+}
+}

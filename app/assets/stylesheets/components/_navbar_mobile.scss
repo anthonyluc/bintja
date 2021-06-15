@@ -1,0 +1,43 @@
+.navbar-bintja-mobile {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  display: block;
+
+  .navbar-nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    .login-nav-item {
+        grid-column: 5;
+        text-align: center;
+    }
+
+    .navbar-brand{
+        text-align: center;
+    }
+
+    i{
+        font-size: 1.5rem;
+    }
+  }
+  .dropdown-menu{
+    position: absolute;
+  }
+}
+  
+.navbar-bintja-mobile .navbar-collapse {
+  flex-grow: 0;
+}
+  
+.navbar-bintja-mobile .navbar-brand img {
+  width: 40px;
+}
+  
+li.nav-item {
+  text-align: center;
+}

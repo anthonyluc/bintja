@@ -1,6 +1,8 @@
+<% unless mobile? %>
 <div class='container'>
+<% end %>
   <% content_for :title, "Follow" %>
-  <div id="follower">
+  <div id="follower" <%= "class=follower_mobile" if mobile? %>>
     <div class='col-left'>
         <h2>I follow</h2>
         <%= render 'users/users_cards' %>
@@ -16,4 +18,6 @@
         </div>
     </div>
   </div>
+<% unless mobile? %>
 </div>
+<% end %>

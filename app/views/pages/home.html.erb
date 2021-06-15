@@ -1,4 +1,4 @@
-<div id="home" style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path("banners/#{rand(1..100)}.jpg") %>) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<div id="home" <%= "class=home_mobile" if mobile? %> style="background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path("banners/#{rand(1..100)}.jpg") %>) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
     <div class='banner'>
         <h1>Cook like a ninja</h1>
         <%= render 'recipes/recipes_search' %>
@@ -6,18 +6,20 @@
     <div class='container'>
         <div class='home_content'>
             <%# render 'adsense/horizontal_responsive' %>
-            <h2 class='h2 text-center'>How it works</h2>
-            <div class='bintja_presentation'>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/zlzhWb1CBqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 class='text-center'>Anyone can make delicious meals</h3>
-            <hr>
-            <h2 class='h2'>For free registered users</h2>
-            <div class='steps'>
-                <p><i class="fas fa-book"></i><br>Save recipes in your cookbook</p>
-                <p><i class="fas fa-user-cog"></i><br>Customize them with your ingredients</p>
-                <p><i class="fas fa-paper-plane"></i><br>Specify ingredients to buy<br>and receive your shopping list<br>by email every week!</p>
-            </div>
+            <% unless mobile? %>
+                <h2 class='h2 text-center'>How it works</h2>
+                <div class='bintja_presentation'>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/zlzhWb1CBqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3 class='text-center'>Anyone can make delicious meals</h3>
+                <hr>
+                <h2 class='h2'>For free registered users</h2>
+                <div class='steps'>
+                    <p><i class="fas fa-book"></i><br>Save recipes in your cookbook</p>
+                    <p><i class="fas fa-user-cog"></i><br>Customize them with your ingredients</p>
+                    <p><i class="fas fa-paper-plane"></i><br>Specify ingredients to buy<br>and receive your shopping list<br>by email every week!</p>
+                </div>
+            <% end %>
             <h2 class='h2'>Random users cookbooks</h2>
             <%= render 'users/users_cards' %>    
             <h2 class='h2'>Recipes recently added</h2>

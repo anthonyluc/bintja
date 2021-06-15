@@ -1,5 +1,5 @@
 <div class='container'>
-    <div id="users_cookbook">
+    <div id="users_cookbook" <%= "class=users_cookbook_mobile" if mobile? %>>
         <div class='title_line'>
             <% content_for :title, "#{@user.nickname}'s cookbook" %>
             <h1><%= @user.nickname %>'s cookbook</h1>

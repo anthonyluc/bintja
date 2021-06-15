@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
     before_action :store_location
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :redirect_root_domain
-    
+    helper_method :mobile?
+
     # Pundit
     before_action  :authenticate_user!
     include Pundit
@@ -18,9 +19,13 @@ class ApplicationController < ActionController::Base
        flash[:alert] = "You are not authorized to perform this action."
        redirect_to(root_path)
     end
-  
+
     private
   
+    def mobile? # has to be in here because it has access to "request"
+      request.user_agent =~ /\b(Android|iPhone|iPad|Windows Phone|Opera Mobi|Kindle|BackBerry|PlayBook)\b/i
+    end
+
     def skip_pundit?
       devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
     end

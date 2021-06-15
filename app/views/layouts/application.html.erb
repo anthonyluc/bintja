@@ -15,8 +15,20 @@
     <%= render 'google/analytics' %>
   </head>
 
-  <body data-controller="flash">
-    <%= render 'shared/navbar' %>
+  <%# --- Body class + Navbar --- %>
+    <% if mobile? %>
+      <% if (current_page?(new_user_session_path) || current_page?(new_user_password_path) || current_page?(new_user_registration_path) || current_page?(new_user_confirmation_path)) %>
+        <body data-controller="flash" class='body-mobile'>
+      <% else %>
+        <body data-controller="flash" style="display:block;">
+        <%= render 'shared/navbar_mobile' %>
+      <% end %>
+    <% else %>
+      <body data-controller="flash">
+      <%= render 'shared/navbar' %>
+    <% end %>
+  <%# --- Body class + Navbar --- %>
+
     <%= render 'shared/flashes' %>
       <%# unless current_page?(root_path) %>
         <%# render 'adsense/horizontal_responsive' %>
@@ -24,6 +36,8 @@
       <%= yield %>
       
   </body>
-  <%= render 'shared/footer' %>
-  <%= render 'shared/cookie_eu_banner' %>
+  <% unless mobile? %>
+    <%= render 'shared/footer' %>
+    <%= render 'shared/cookie_eu_banner' %>
+  <% end %>
 </html>

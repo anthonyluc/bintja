@@ -1,5 +1,5 @@
 <div class='container'>
-  <div id='recipe_show'>
+  <div id='recipe_show' <%= "class=recipe_show_mobile" if mobile? %>>
     <div class='top-button'>
         <%= render "shared/btn_back" %>
         <%= render "recipes/get_this_recipe" %>

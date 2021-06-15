@@ -74,3 +74,17 @@
       
      }
   }
+.my_cookbook_mobile{
+  h1{
+    font-size: 2rem;
+  }
+  .form-control{
+      font-size: 0.75rem;
+  }
+  input.btn.btn-primary {
+    font-size: 0.75rem;
+  }
+  .delete_private_recipe_group{
+    font-size: 0.75rem;
+  }
+}

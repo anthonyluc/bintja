@@ -43,6 +43,11 @@
             display: none;
         }
     }
+    .recipes_search_mobile{
+        input#search_query {
+            font-size: large;
+        }
+    }
     
     .last_recipes {
         display: grid;
@@ -119,5 +124,19 @@
         .banner{
             height: 60vh;
         }
+    }
+}
+
+.home_mobile{
+    h1{
+        padding-top:25vh !important;
+        margin-top:0px !important;
+        font-size:2rem !important;
+    }
+    .h2{
+        font-size:1.5rem !important;
+    }
+    .container{
+        padding-bottom:2rem !important;
     }
 }

@@ -1,5 +1,5 @@
 <div class='container'>
-    <div id="shopping_list">
+    <div id="shopping_list" <%= "class=shopping_list_mobile" if mobile? %>>
         <% content_for :title, "Shopping list" %>
         <h1>Shopping list</h1>
         <%= render "shopping_lists/shopping_note" %>

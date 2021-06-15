@@ -1,5 +1,5 @@
 <div class='container'>
-    <div id='recipe_show' data-controller='add-ingredient add-to-my-cookbook'>
+    <div id='recipe_show' <%= "class=recipe_show_mobile" if mobile? %> data-controller='add-ingredient add-to-my-cookbook'>
         <div class='top-button'>
             <%= render "shared/btn_back" %>
             <%= render "recipe_groups/set_recipe_group" %>
