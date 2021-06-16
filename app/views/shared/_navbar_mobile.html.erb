@@ -4,17 +4,17 @@
     <ul class="navbar-nav">
         <%= link_to "Bintja", root_path, class: "navbar-brand" %>
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item <%= "current_link" if current_page?(follow_path) %>">
           <%= link_to follow_path, class: "nav-link" do %>
             <i class="fas fa-user-check"></i>
           <% end %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= "current_link" if (current_page?(my_cookbook_path) || request.path.start_with?("/recipes/")) %>">
           <%= link_to my_cookbook_path, class: "nav-link" do %>
             <i class="fas fa-book"></i>
           <% end %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= "current_link" if current_page?(shopping_list_path) %>">
           <%= link_to shopping_list_path, class: "nav-link" do %>
             <i class="fas fa-shopping-cart"></i>
           <% end %>

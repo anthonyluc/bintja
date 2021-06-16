@@ -10,13 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item <%= "current_link" if current_page?(follow_path) %>">
           <%= link_to "Follow", follow_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+       <li class="nav-item <%= "current_link" if (current_page?(my_cookbook_path) || request.path.start_with?("/recipes/")) %>">
           <%= link_to "My cookbook", my_cookbook_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%= "current_link" if current_page?(shopping_list_path) %>">
           <%= link_to "Shopping list", shopping_list_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">

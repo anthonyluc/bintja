@@ -15,3 +15,11 @@
 li.nav-item {
   text-align: center;
 }
+
+.current_link {
+  border-bottom: 3px solid $green;
+  margin-bottom: -0.60rem;
+  a{
+    color: $green !important;
+  }
+}
