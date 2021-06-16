@@ -9,7 +9,8 @@
         <div class="form-inputs">
           <div class='avatar_config'>
             <% if current_user.avatar.attached? %>
-              <%= image_tag current_user.avatar, class: "avatar" %>
+              <%= cl_image_tag(current_user.avatar.key, width: 250, height: 250, gravity: "face", crop: "thumb", zoom: 0.8, class: "avatar") %>
+              <%#= image_tag current_user.avatar, class: "avatar" %>
               <%= link_to avatar_path, id: 'delete_avatar', method: :delete, remote: true, title: "Delete avatar" do %>
                 <i class="fas fa-backspace delete_avatar"></i>
               <% end %>
@@ -18,7 +19,7 @@
             <% end %>
             <div class="field">
               <%= f.file_field :avatar %><br>
-              <small>.png, .jpg or .jpeg file under 2MB</small>
+              <small>.png, .jpg or .jpeg file under 4MB</small>
             </div>
           </div>
           <%= f.input :nickname, required: true, autofocus: true %>

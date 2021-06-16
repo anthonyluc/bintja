@@ -4,7 +4,8 @@
             <div class='comment_left'>
                 <%= link_to user_path(r.user.nickname) do %>
                     <% if r.user.avatar.attached? %>
-                        <%= image_tag r.user.avatar, class: "avatar" %>
+                        <%#= image_tag r.user.avatar, class: "avatar" %>
+                        <%= cl_image_tag(r.user.avatar.key, width: 250, height: 250, gravity: "face", crop: "thumb", zoom: 0.8, class: "avatar") %>
                     <% else %>
                         <%= image_tag "avatar_default.svg", class: "avatar" %>
                     <% end %>

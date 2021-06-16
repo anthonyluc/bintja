@@ -6,7 +6,8 @@
                 <div class='comment'>
                     <div class='comment_left'>
                         <% if current_user.avatar.attached? %>
-                            <%= image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                            <%# image_tag current_user.avatar, class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
+                            <%= cl_image_tag(current_user.avatar.key, width: 250, height: 250, gravity: "face", crop: "thumb", zoom: 0.8, class: "avatar", id: "navbarDropdown", :data => { :'add-reviews-target' => 'avatar' }) %>
                         <% else %>
                             <%= image_tag "avatar_default.svg", class: "avatar", :data => { :'add-reviews-target' => 'avatar' } %>
                         <% end %>
