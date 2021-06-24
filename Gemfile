@@ -41,6 +41,8 @@ gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 
 # Scrapping
 gem 'open-uri'
+# parse api json
+gem 'rest-client'
 gem 'json'
 
 # Show Youtube video

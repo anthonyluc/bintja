@@ -378,6 +378,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.6)
   rails_admin
   redis (~> 4.0)
+  rest-client
   sass-rails (>= 6)
   selenium-webdriver
   sidekiq
