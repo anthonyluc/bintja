@@ -17,8 +17,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.2"
-  },
-  "node-pre-gyp": "0.17.0",
-  "fsevents": "2.2.1"
+    "webpack-dev-server": "^3.11.2",
+    "node-pre-gyp": "0.17.0",
+    "fsevents": "2.2.1"
+  }
 }
