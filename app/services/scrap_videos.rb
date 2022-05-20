@@ -37,7 +37,7 @@ class ScrapVideos
         ### Méthode API Youtube Data v3        
         # On transforme la requête pour YT
         recipe_query.gsub!(' ', '+')
-        url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=recipe+#{recipe_query}&maxResults=48&key=#{ENV['API_YT_DATA_V3']}"
+        url = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=26&q=recipe+#{recipe_query}&maxResults=48&key=#{ENV['API_YT_DATA_V3']}"
         response_url = RestClient.get(url)
 
         response_json = JSON.parse(response_url)
