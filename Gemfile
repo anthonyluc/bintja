@@ -31,7 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 6.1.1'
+#gem 'font-awesome-sass', '~> 4.4.0'
 gem 'simple_form'
 
 gem 'pundit'
@@ -95,3 +96,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# To delete font-awesome error
+gem 'sprockets', '~> 3.7.2'

@@ -38,18 +38,35 @@ class ScrapVideos
         # On transforme la requête pour YT
         recipe_query.gsub!(' ', '+')
         url = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoCategoryId=26&q=recipe+#{recipe_query}&maxResults=48&key=#{ENV['API_YT_DATA_V3']}"
-        response_url = RestClient.get(url)
+        # response_url = RestClient.get(url)
+        # response_json = JSON.parse(response_url)
 
-        response_json = JSON.parse(response_url)
+        # response_json["items"].each do |r|
+        #     tab_url << "https://www.youtube.com/watch?v=#{r["id"]["videoId"]}"
+        #     tab_title << "#{r["snippet"]["title"]}"
+        #     tab_img << "#{r["snippet"]["thumbnails"]["high"]["url"]}"
+        # end
 
-        response_json["items"].each do |r|
-            tab_url << "https://www.youtube.com/watch?v=#{r["id"]["videoId"]}"
-            tab_title << "#{r["snippet"]["title"]}"
-            tab_img << "#{r["snippet"]["thumbnails"]["high"]["url"]}"
-        end
+        # yt_recipes_hash = {title: tab_title, url: tab_url, img: tab_img}
 
-        yt_recipes_hash = {title: tab_title, url: tab_url, img: tab_img}
+        # return yt_recipes_hash.to_s
+        ####
+        begin
+            response_url = RestClient.get(url)
+        rescue RestClient::Unauthorized, RestClient::Forbidden => err
+                    return yt_recipes_hash = nil
+        else
+            response_json = JSON.parse(response_url)
 
-        return yt_recipes_hash.to_s
+            response_json["items"].each do |r|
+                tab_url << "https://www.youtube.com/watch?v=#{r["id"]["videoId"]}"
+                tab_title << "#{r["snippet"]["title"]}"
+                tab_img << "#{r["snippet"]["thumbnails"]["high"]["url"]}"
+            end
+
+            yt_recipes_hash = {title: tab_title, url: tab_url, img: tab_img}
+
+            return yt_recipes_hash.to_s
+        end 
     end
 end

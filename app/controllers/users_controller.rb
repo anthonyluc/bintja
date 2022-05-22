@@ -128,6 +128,12 @@ class UsersController < ApplicationController
 
       yt_video_id = YouTubeAddy.extract_video_id("https://www.youtube.com/watch?v=#{params[:recipe][:id]}")
       load "#{Rails.root}/app/services/scrap_video_info.rb"
-      @recipe = eval(ScrapVideoInfo.youtube(yt_video_id))
+      #@recipe = eval(ScrapVideoInfo.youtube(yt_video_id))
+      video_info = ScrapVideoInfo.youtube(yt_video_id)
+      if video_info.nil?
+        redirect_back(fallback_location: root_path)
+      else
+        @recipe = eval(video_info)
+      end
     end
 end

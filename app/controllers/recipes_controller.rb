@@ -10,7 +10,11 @@ class RecipesController < ApplicationController
         load "#{Rails.root}/app/services/scrap_videos.rb"
         @recipes_search = (params[:search][:query]).parameterize
         recipes = ScrapVideos.youtube(@recipes_search)
-        @recipes = eval(recipes)
+        if recipes.nil?
+          redirect_to root_path 
+        else
+          @recipes = eval(recipes)
+        end
     end
 
     def show

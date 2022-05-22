@@ -24,13 +24,29 @@ class ScrapVideoInfo
 
         ### Méthode API Youtube Data v3
         url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{yt_video_id}&key=#{ENV['API_YT_DATA_V3']}"
-        response_url = RestClient.get(url)
-        response_json = JSON.parse(response_url)
+        # response_url = RestClient.get(url)
+        # response_json = JSON.parse(response_url)
 
-        title_vid = response_json["items"][0]["snippet"]["title"]
-        image_vid = response_json["items"][0]["snippet"]["thumbnails"]["high"]["url"]
-        yt_recipes_hash[title_vid] = {url: "https://www.youtube.com/watch?v=#{yt_video_id}", image: image_vid} 
+        # title_vid = response_json["items"][0]["snippet"]["title"]
+        # image_vid = response_json["items"][0]["snippet"]["thumbnails"]["high"]["url"]
+        # yt_recipes_hash[title_vid] = {url: "https://www.youtube.com/watch?v=#{yt_video_id}", image: image_vid} 
 
-        return yt_recipes_hash.to_s
+        # return yt_recipes_hash.to_s
+
+        ### Prise en compte Erreur 403 API YT
+
+        begin
+            response_url = RestClient.get(url)
+        rescue RestClient::Unauthorized, RestClient::Forbidden => err
+                    return yt_recipes_hash = nil
+        else
+            response_json = JSON.parse(response_url)
+        
+            title_vid = response_json["items"][0]["snippet"]["title"]
+            image_vid = response_json["items"][0]["snippet"]["thumbnails"]["high"]["url"]
+            yt_recipes_hash[title_vid] = {url: "https://www.youtube.com/watch?v=#{yt_video_id}", image: image_vid} 
+        
+            return yt_recipes_hash.to_s
+        end 
     end
 end
